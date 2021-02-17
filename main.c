@@ -34,5 +34,7 @@ void PrintChessboard()
 
 int main()
 {
+	RefreshСhessboard();
+	PrintСhessboard();
     return 0;
 }
