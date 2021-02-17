@@ -50,6 +50,6 @@ void PrintChessboard()
 int main()
 {
     RefreshСhessboard();
-    PrintСhessboard();
+    PrintChessboard();
     return 0;
 }
