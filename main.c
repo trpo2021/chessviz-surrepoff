@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 const int N = 9;
-char A[9][9];
-int i, j;
 
-void RefreshChessboard()
+void RefreshChessboard(char A[N][N])
 {
+    int i, j;
     for (i = 0; i < N; i++)
         for (j = 0; j < N; j++)
             A[i][j] = ' ';
@@ -37,8 +36,9 @@ void RefreshChessboard()
     A[5][8] = 'k';
 }
 
-void PrintChessboard()
+void PrintChessboard(char A[N][N])
 {
+    int i, j;
     for (j = 8; j >= 0; j--) {
         for (i = 0; i <= 8; i++) {
             printf("%c ", A[i][j]);
@@ -49,7 +49,8 @@ void PrintChessboard()
 
 int main()
 {
-    RefreshChessboard();
-    PrintChessboard();
+    char A[N][N];
+    RefreshChessboard(A);
+    PrintChessboard(A);
     return 0;
 }
