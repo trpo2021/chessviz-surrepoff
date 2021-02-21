@@ -4,7 +4,7 @@ const int N = 9;
 char A[9][9];
 int i, j;
 
-void RefreshСhessboard()
+void RefreshChessboard()
 {
     for (i = 0; i < N; i++)
         for (j = 0; j < N; j++)
@@ -49,7 +49,7 @@ void PrintChessboard()
 
 int main()
 {
-    RefreshСhessboard();
+    RefreshChessboard();
     PrintChessboard();
     return 0;
 }
