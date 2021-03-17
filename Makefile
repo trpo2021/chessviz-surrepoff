@@ -1,4 +1,4 @@
 all: main
 
-main: main.c
-	gcc -Wall -Werror main.c
+main: src/chessviz/main.c
+	gcc -Wall -Werror src/chessviz/main.c
