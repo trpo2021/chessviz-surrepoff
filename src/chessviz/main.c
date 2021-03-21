@@ -96,6 +96,24 @@ int DefineCommand(char* command)
     return code;
 }
 
+void PrintError(int code)
+{
+    switch (code) {
+    case 10:
+        printf("ERROR : Wrong command\n");
+        break;
+    case 11:
+        printf("ERROR : Wrong flag\n");
+        break;
+    case 12:
+        printf("ERROR : Wrong input file format (Not .txt)\n");
+        break;
+    case 13:
+        printf("ERROR : File not found\n");
+        break;
+    }
+}
+
 int main()
 {
     FILE* InputFile;
@@ -116,6 +134,7 @@ int main()
             if (InputFile == NULL)
                 code = 13;
         }
+        PrintError(code);
     } while (code >= 10);
     RefreshChessboard(A);
     PrintChessboard(A);
