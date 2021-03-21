@@ -153,7 +153,7 @@ int main()
         }
         PrintError(code);
         ChangeFlag(code, console, txt, html);
-    } while (code >= 10);
+    } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
 
     RefreshChessboard(A);
     PrintChessboard(A);
