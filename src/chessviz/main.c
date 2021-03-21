@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 const int N = 9;
 
 void RefreshChessboard(char A[N][N])
@@ -47,8 +48,44 @@ void PrintChessboard(char A[N][N])
     }
 }
 
+int DefineCommand(char* command)
+{
+    int length = strlen(command), i, code = 0;
+
+    if (strncmp(command, "chessviz ", 9) != 0) {
+        if (strcmp(command, "chessviz") == 0)
+            code = 1;
+        else
+            code = 10;
+    }
+
+    if (strncmp(command, "exit", 4) == 0)
+        code = -1;
+
+    if (code == 0) {
+        for (i = 9; i < length; i++)
+            command[i - 9] = command[i];
+        for (i = length - 9; i < length; i++)
+            command[i] = '\0';
+        if ((command[0] == '-') && (command[1] == '-'))
+            code = DefineFlag(command);
+        else {
+            length = strlen(command);
+            if (((command[length - 4] != '.') && (command[length - 3] != 't')
+                 && (command[length - 2] != 'x')
+                 && (command[length - 1] != 't'))
+                || (length <= 4))
+                code = 12;
+        }
+    }
+
+    return code;
+}
+
 int main()
 {
+    FILE* InputFile;
+    int code;
     char A[N][N];
     RefreshChessboard(A);
     PrintChessboard(A);
