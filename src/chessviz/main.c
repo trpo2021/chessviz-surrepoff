@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 const int N = 9;
+const int S = 32;
 
 void RefreshChessboard(char A[N][N])
 {
@@ -48,7 +49,7 @@ void PrintChessboard(char A[N][N])
     }
 }
 
-int DefineFlag(char* flag)
+int DefineFlag(char flag[S])
 {
     int code = 11;
 
@@ -79,7 +80,7 @@ void ChangeFlag(int code, int console, int txt, int html)
     }
 }
 
-int DefineCommand(char* command)
+int DefineCommand(char command[S])
 {
     int length = strlen(command), i, code = 0;
 
@@ -135,15 +136,15 @@ int main()
 {
     FILE* InputFile;
     int code, console = 0, txt = 1, html = 0;
-    char A[N][N];
-    char* string = (char*)calloc(32, sizeof(char));
+    char A[N][N], string[S];
     do {
-        gets(string);
+        fgets(string, S, stdin);
+        string[strcspn(string, "\n")] = 0;
         code = DefineCommand(string);
         if (code == -1)
             break;
         if (code == 1) {
-            string = "stdin.txt";
+            strcpy(string, "stdin.txt");
             code = 0;
         }
         if (code == 0) {
@@ -159,6 +160,5 @@ int main()
     PrintChessboard(A);
 
     fclose(InputFile);
-    free(string);
     return 0;
 }
