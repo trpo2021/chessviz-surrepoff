@@ -48,6 +48,20 @@ void PrintChessboard(char A[N][N])
     }
 }
 
+int DefineFlag(char* flag)
+{
+    int code = 11;
+
+    if (strcmp(flag, "--console") == 0)
+        code = 2;
+    if (strcmp(flag, "--txt") == 0)
+        code = 3;
+    if (strcmp(flag, "--html") == 0)
+        code = 4;
+
+    return code;
+}
+
 int DefineCommand(char* command)
 {
     int length = strlen(command), i, code = 0;
