@@ -62,6 +62,23 @@ int DefineFlag(char* flag)
     return code;
 }
 
+void ChangeFlag(int code, int console, int txt, int html)
+{
+    switch (code) {
+    case 2:
+        console = 1;
+        break;
+    case 3:
+        txt = 1;
+        html = 0;
+        break;
+    case 4:
+        html = 1;
+        txt = 0;
+        break;
+    }
+}
+
 int DefineCommand(char* command)
 {
     int length = strlen(command), i, code = 0;
@@ -117,7 +134,7 @@ void PrintError(int code)
 int main()
 {
     FILE* InputFile;
-    int code;
+    int code, console = 0, txt = 1, html = 0;
     char A[N][N];
     char* string = (char*)calloc(32, sizeof(char));
     do {
@@ -135,9 +152,12 @@ int main()
                 code = 13;
         }
         PrintError(code);
+        ChangeFlag(code, console, txt, html);
     } while (code >= 10);
+
     RefreshChessboard(A);
     PrintChessboard(A);
+
     fclose(InputFile);
     free(string);
     return 0;
