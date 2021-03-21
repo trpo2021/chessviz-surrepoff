@@ -101,7 +101,25 @@ int main()
     FILE* InputFile;
     int code;
     char A[N][N];
+    char* string = (char*)calloc(32, sizeof(char));
+    do {
+        gets(string);
+        code = DefineCommand(string);
+        if (code == -1)
+            break;
+        if (code == 1) {
+            string = "stdin.txt";
+            code = 0;
+        }
+        if (code == 0) {
+            InputFile = fopen(string, "r");
+            if (InputFile == NULL)
+                code = 13;
+        }
+    } while (code >= 10);
     RefreshChessboard(A);
     PrintChessboard(A);
+    fclose(InputFile);
+    free(string);
     return 0;
 }
