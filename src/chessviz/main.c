@@ -4,6 +4,12 @@
 const int N = 9;
 const int S = 32;
 
+typedef struct Square {
+    int file;
+    int rank;
+} Square;
+// file = x, rank = y
+
 void ShiftString(char* string, int step)
 {
     int i;
