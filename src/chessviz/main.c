@@ -314,6 +314,36 @@ int DefineCommand(char command[S])
     return code;
 }
 
+int CheckMove(
+        char Chessboard[N][N],
+        Square square1,
+        Square square2,
+        int piece,
+        int turn,
+        int movetype,
+        int moveend)
+{
+    int code = 301;
+    int PossibleMoves[N][N];
+    RefreshPossibleMoves(PossibleMoves);
+    FillInPossibleMoves(
+            PossibleMoves, Chessboard, square1, piece, turn, moveend);
+    if (PossibleMoves[square2.file][square2.rank] == 1) {
+        if (movetype == 0)
+            code = 0;
+        else
+            code = 302;
+    }
+    if (PossibleMoves[square2.file][square2.rank] == 2) {
+        if (movetype == 1)
+            code = 0;
+        else
+            code = 302;
+    }
+
+    return code;
+}
+
 int CheckCastling(int option, int turn)
 {
     return 0;
@@ -363,7 +393,7 @@ int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
     char square[2];
     char Move[S / 2];
     strcpy(Move, MoveOriginal);
-    int code = 0, piece = -1, movetype, moveend = 0, i;
+    int code = 0, piece = -1, movetype, moveend = 0,;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
         if (strcmp(Move, "0-0-0") == 0)
             code = CheckCastling(1, turn);
