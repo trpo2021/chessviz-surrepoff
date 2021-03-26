@@ -19,6 +19,15 @@ int DefineFile(char file)
     return code;
 }
 
+int DefineRank(char rank)
+{
+    int code;
+    code = -1;
+    if ((rank - 48 > 0) && (rank - 48 < 9))
+        code = rank - 48;
+    return code;
+}
+
 Square DefineSquare(char string[2])
 {
     Square square;
