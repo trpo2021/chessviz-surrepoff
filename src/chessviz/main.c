@@ -10,6 +10,14 @@ typedef struct Square {
 } Square;
 // file = x, rank = y
 
+Square DefineSquare(char string[2])
+{
+    Square square;
+    square.file = DefineFile(string[0]);
+    square.rank = DefineRank(string[1]);
+    return square;
+}
+
 void ShiftString(char* string, int step)
 {
     int i;
