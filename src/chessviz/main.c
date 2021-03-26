@@ -329,6 +329,41 @@ void PossibleMovesPawn(
         int turn,
         int moveend)
 {
+	int direction;
+
+    if (turn)
+        direction = -1;
+    else
+        direction = 1;
+
+    if (Chessboard[square.file][square.rank + direction] == 32) {
+        PossibleMoves[square.file][square.rank + direction] = 1;
+        if (((square.rank == 2) && (!turn)) || ((square.rank == 7) && (turn)))
+            if (Chessboard[square.file][square.rank + 2 * direction] == 32)
+                PossibleMoves[square.file][square.rank + 2 * direction] = 1;
+    }
+
+    if (Chessboard[square.file + direction][square.rank + direction] != 32)
+        if (DefinePieceCapture(
+                    Chessboard[square.file + direction]
+                              [square.rank + direction],
+                    turn))
+            PossibleMoves[square.file + direction][square.rank + direction] = 2;
+
+    if (Chessboard[square.file - direction][square.rank + direction] != 32)
+        if (DefinePieceCapture(
+                    Chessboard[square.file - direction]
+                              [square.rank + direction],
+                    turn))
+            PossibleMoves[square.file - direction][square.rank + direction] = 2;
+
+    if (moveend == 7) {
+        if (Chessboard[square.file + direction][square.rank + direction] == 32)
+            PossibleMoves[square.file + direction][square.rank + direction] = 2;
+
+        if (Chessboard[square.file - direction][square.rank + direction] == 32)
+            PossibleMoves[square.file - direction][square.rank + direction] = 2;
+    }
 }
 
 void PossibleMovesBishop(
