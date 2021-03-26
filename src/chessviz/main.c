@@ -240,6 +240,29 @@ void ChangeFlag(int code, int console, int txt, int html)
     }
 }
 
+int DefineMoveEnd(char* Move, int piece, int turn)
+{
+    int code = 206;
+    if (strcmp(Move, "+") == 0) {
+        code = 5;
+    }
+    if (strcmp(Move, "#") == 0) {
+        code = 6;
+    }
+    if (strcmp(Move, "e.p.") == 0) {
+        if (piece == 0) {
+            code = 7;
+        }
+        code = 207;
+    }
+    if (strlen(Move) == 1) {
+        if ((DefinePiece(Move[0], turn) > 0)
+            && (DefinePiece(Move[0], turn) < 5))
+            code = DefinePiece(Move[0], turn);
+    }
+    return code;
+}
+
 int DefineMoveType(char Move)
 {
     int code;
