@@ -90,6 +90,99 @@ void PrintChessboard(char Chessboard[N][N])
     }
 }
 
+int DefinePiece(char piece, int turn)
+{
+    int code = 200;
+    switch (piece) {
+    case 80:
+        if (!turn)
+            code = 0;
+        else
+            code = 201;
+        break;
+
+    case 66:
+        if (!turn)
+            code = 1;
+        else
+            code = 201;
+        break;
+
+    case 78:
+        if (!turn)
+            code = 2;
+        else
+            code = 201;
+        break;
+
+    case 82:
+        if (!turn)
+            code = 3;
+        else
+            code = 201;
+        break;
+
+    case 81:
+        if (!turn)
+            code = 4;
+        else
+            code = 201;
+        break;
+
+    case 75:
+        if (!turn)
+            code = 5;
+        else
+            code = 201;
+        break;
+
+    case 112:
+        if (turn)
+            code = 0;
+        else
+            code = 202;
+        break;
+
+    case 98:
+        if (turn)
+            code = 1;
+        else
+            code = 202;
+        break;
+
+    case 110:
+        if (turn)
+            code = 2;
+        else
+            code = 202;
+        break;
+
+    case 114:
+        if (turn)
+            code = 3;
+        else
+            code = 202;
+        break;
+
+    case 113:
+        if (turn)
+            code = 4;
+        else
+            code = 202;
+        break;
+
+    case 107:
+        if (turn)
+            code = 5;
+        else
+            code = 202;
+        break;
+    }
+
+    return code;
+}
+
+
 int DefineFlag(char flag[S])
 {
     int code = 11;
