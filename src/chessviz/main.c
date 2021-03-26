@@ -90,6 +90,33 @@ void PrintChessboard(char Chessboard[N][N])
     }
 }
 
+int DefinePieceChar(int piece, int turn)
+{
+    int code;
+    switch (piece) {
+    case 0:
+        code = 80;
+        break;
+    case 1:
+        code = 66;
+        break;
+    case 2:
+        code = 78;
+        break;
+    case 3:
+        code = 82;
+        break;
+    case 4:
+        code = 81;
+        break;
+    case 5:
+        code = 75;
+        break;
+    }
+    code += turn * 32;
+    return code;
+}
+
 int DefinePiece(char piece, int turn)
 {
     int code = 200;
