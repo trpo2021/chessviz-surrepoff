@@ -4,6 +4,15 @@
 const int N = 9;
 const int S = 32;
 
+void ShiftString(char* string, int step)
+{
+    int i;
+    for (i = 0; i < strlen(string) - (step - 1); i++)
+        string[i] = string[i + step];
+    for (i = 0; i < step; i++)
+        string[strlen(string)] = '\0';
+}
+
 void RefreshChessboard(char Chessboard[N][N])
 {
     int i, j;
