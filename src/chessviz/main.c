@@ -99,6 +99,7 @@ int DefineCommand(char command[S])
             command[i - 9] = command[i];
         for (i = length - 9; i < length; i++)
             command[i] = '\0';
+
         if ((command[0] == '-') && (command[1] == '-'))
             code = DefineFlag(command);
         else {
@@ -108,6 +109,69 @@ int DefineCommand(char command[S])
                  && (command[length - 1] != 't'))
                 || (length <= 4))
                 code = 12;
+        }
+    }
+
+    return code;
+}
+
+int InputLine(char Chessboard[N][N], char line[S])
+{
+    int code = 0, i;
+    char MoveNumber[S / 4], WhiteMove[S / 2], BlackMove[S / 2];
+
+    for (i = 0; i < strcspn(line, "."); i++) {
+        if (!((line[i] >= 48) && (line[i] <= 57))) {
+            code = 100;
+            break;
+        }
+    }
+
+    if (code != 100) {
+        strncpy(MoveNumber, line, strcspn(line, ".") + 1);
+        for (i = strcspn(line, ".") + 1; i < S / 4; i++)
+            MoveNumber[i] = '\0';
+    }
+
+    if (code == 0) {
+        for (i = 0; i < strlen(line) - strlen(MoveNumber); i++)
+            line[i] = line[i + strlen(MoveNumber)];
+        for (i = strlen(line) - strlen(MoveNumber); i < strlen(line); i++)
+            line[i] = '\0';
+        if (line[0] != 32)
+            code = 101;
+
+        if (code == 0) {
+            ShiftString(line, 1);
+
+            if (strcspn(line, " ") < strlen(line) - 1) {
+                strncpy(WhiteMove, line, strcspn(line, " "));
+                for (i = strcspn(line, " "); i < S / 2; i++)
+                    WhiteMove[i] = '\0';
+
+                for (i = 0; i < strlen(line) - strlen(WhiteMove); i++)
+                    line[i] = line[i + strlen(WhiteMove)];
+                for (i = strlen(WhiteMove) + 1; i < strlen(line); i++)
+                    line[i] = '\0';
+
+                code = InputMove(Chessboard, WhiteMove, 0);
+
+                if (code == 0) {
+                    ShiftString(line, 1);
+
+                    strncpy(BlackMove, line, strlen(line));
+                    for (i = strlen(line); i < S / 2; i++)
+                        BlackMove[i] = '\0';
+
+                    code = InputMove(Chessboard, BlackMove, 1);
+                }
+            } else {
+                strncpy(WhiteMove, line, strlen(line) - 1);
+                for (i = strcspn(line, " "); i < S / 2; i++)
+                    WhiteMove[i] = '\0';
+
+                code = InputMove(Chessboard, WhiteMove, 0);
+            }
         }
     }
 
@@ -158,9 +222,9 @@ int main()
 
     RefreshChessboard(Chessboard);
     PrintChessboard(Chessboard);
-	printf("\n\n\n");
+    printf("\n\n\n");
 
- while (1) {
+    while (1) {
         if (fgets(string, S, InputFile) == NULL)
             break;
         string[strcspn(string, "\n")] = 0;
