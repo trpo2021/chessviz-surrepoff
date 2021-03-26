@@ -240,6 +240,22 @@ void ChangeFlag(int code, int console, int txt, int html)
     }
 }
 
+int DefineMoveType(char Move)
+{
+    int code;
+    switch (Move) {
+    case 45:
+        code = 0;
+        break;
+    case 120:
+        code = 1;
+        break;
+    default:
+        code = 204;
+    }
+    return code;
+}
+
 int DefineCommand(char command[S])
 {
     int length = strlen(command), i, code = 0;
