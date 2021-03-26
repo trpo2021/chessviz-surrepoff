@@ -156,6 +156,11 @@ int DefineCommand(char command[S])
     return code;
 }
 
+int CheckCastling(int option, int turn)
+{
+    return 0;
+}
+
 int DoMove(
         char Chessboard[N][N],
         Square square1,
