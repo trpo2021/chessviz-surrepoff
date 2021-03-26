@@ -322,6 +322,36 @@ void RefreshPossibleMoves(int PossibleMoves[N][N])
             PossibleMoves[i][j] = 0;
 }
 
+void FillInPossibleMoves(
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int piece,
+        int turn,
+        int moveend)
+{
+    switch (piece) {
+    case 0:
+        PossibleMovesPawn(PossibleMoves, Chessboard, square, turn, moveend);
+        break;
+    case 1:
+        PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+        break;
+    case 2:
+        PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
+        break;
+    case 3:
+        PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+        break;
+    case 4:
+        PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
+        break;
+    case 5:
+        PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
+        break;
+    }
+}
+
 int CheckMove(
         char Chessboard[N][N],
         Square square1,
