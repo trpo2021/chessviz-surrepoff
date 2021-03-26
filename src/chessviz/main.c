@@ -346,7 +346,7 @@ void PossibleMovesPawn(
         int turn,
         int moveend)
 {
-	int direction;
+    int direction;
 
     if (turn)
         direction = -1;
@@ -517,7 +517,7 @@ int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
     char square[2];
     char Move[S / 2];
     strcpy(Move, MoveOriginal);
-    int code = 0, piece = -1, movetype, moveend = 0,;
+    int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
         if (strcmp(Move, "0-0-0") == 0)
             code = CheckCastling(1, turn);
@@ -660,48 +660,86 @@ void PrintError(int code)
     case 13:
         printf("ERROR : File not found\n");
         break;
+    case 100:
+        printf("ERROR : Incorrect move number\n");
+        break;
+    case 101:
+        printf("ERROR : No gap after move number\n");
+        break;
+    case 200:
+        printf("ERROR : Incorrect piece\n");
+        break;
+    case 201:
+        printf("ERROR : It's white turn\n");
+        break;
+    case 202:
+        printf("ERROR : It's black turn\n");
+        break;
+    case 203:
+        printf("ERROR : Incorrect first square\n");
+        break;
+    case 204:
+        printf("ERROR : Incorrect move type\n");
+        break;
+    case 205:
+        printf("ERROR : Incorrect second square\n");
+        break;
+    case 206:
+        printf("ERROR : Incorrect move end\n");
+        break;
+    case 207:
+        printf("ERROR : Not pawn can't do en passant\n");
+        break;
+    case 300:
+        printf("ERROR : The piece isn't in first square\n");
+        break;
+    case 301:
+        printf("ERROR : Impossible move\n");
+        break;
+    case 302:
+        printf("ERROR : Actual move type doesn't match given move type\n");
+        break;
     }
-}
 
-int main()
-{
-    FILE* InputFile;
-    int code, console = 0, txt = 1, html = 0;
-    char Chessboard[N][N], string[S];
-    do {
-        fgets(string, S, stdin);
-        string[strcspn(string, "\n")] = 0;
-        code = DefineCommand(string);
-        if (code == -1)
-            break;
-        if (code == 1) {
-            strcpy(string, "stdin.txt");
-            code = 0;
+    int main()
+    {
+        FILE* InputFile;
+        int code, console = 0, txt = 1, html = 0;
+        char Chessboard[N][N], string[S];
+        do {
+            fgets(string, S, stdin);
+            string[strcspn(string, "\n")] = 0;
+            code = DefineCommand(string);
+            if (code == -1)
+                break;
+            if (code == 1) {
+                strcpy(string, "stdin.txt");
+                code = 0;
+            }
+            if (code == 0) {
+                InputFile = fopen(string, "r");
+                if (InputFile == NULL)
+                    code = 13;
+            }
+            PrintError(code);
+            ChangeFlag(code, console, txt, html);
+        } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
+
+        RefreshChessboard(Chessboard);
+        PrintChessboard(Chessboard);
+        printf("\n\n\n");
+
+        while (1) {
+            if (fgets(string, S, InputFile) == NULL)
+                break;
+            string[strcspn(string, "\n")] = 0;
+            puts(string);
+            code = InputLine(Chessboard, string);
+            PrintError(code);
+            if (code > 0)
+                break;
         }
-        if (code == 0) {
-            InputFile = fopen(string, "r");
-            if (InputFile == NULL)
-                code = 13;
-        }
-        PrintError(code);
-        ChangeFlag(code, console, txt, html);
-    } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
 
-    RefreshChessboard(Chessboard);
-    PrintChessboard(Chessboard);
-    printf("\n\n\n");
-
-    while (1) {
-        if (fgets(string, S, InputFile) == NULL)
-            break;
-        string[strcspn(string, "\n")] = 0;
-        puts(string);
-        code = InputLine(Chessboard, string);
-        PrintError(code);
-        if (code > 0)
-            break;
+        fclose(InputFile);
+        return 0;
     }
-
-    fclose(InputFile);
-    return 0;
-}
