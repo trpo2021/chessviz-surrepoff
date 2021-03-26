@@ -158,6 +158,18 @@ int main()
 
     RefreshChessboard(Chessboard);
     PrintChessboard(Chessboard);
+	printf("\n\n\n");
+
+ while (1) {
+        if (fgets(string, S, InputFile) == NULL)
+            break;
+        string[strcspn(string, "\n")] = 0;
+        puts(string);
+        code = InputLine(Chessboard, string);
+        PrintError(code);
+        if (code > 0)
+            break;
+    }
 
     fclose(InputFile);
     return 0;
