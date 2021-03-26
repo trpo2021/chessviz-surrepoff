@@ -10,6 +10,15 @@ typedef struct Square {
 } Square;
 // file = x, rank = y
 
+int DefineFile(char file)
+{
+    int code;
+    code = -1;
+    if ((file - 96 > 0) && (file - 96 < 9))
+        code = file - 96;
+    return code;
+}
+
 Square DefineSquare(char string[2])
 {
     Square square;
