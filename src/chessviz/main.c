@@ -4,46 +4,46 @@
 const int N = 9;
 const int S = 32;
 
-void RefreshChessboard(char A[N][N])
+void RefreshChessboard(char Chessboard[N][N])
 {
     int i, j;
     for (i = 0; i < N; i++)
         for (j = 0; j < N; j++)
-            A[i][j] = ' ';
+            Chessboard[i][j] = ' ';
     for (i = 1; i < N; i++)
-        A[i][0] = 'a' + i - 1;
+        Chessboard[i][0] = 'a' + i - 1;
     for (j = 1; j < N; j++)
-        A[0][j] = '1' + j - 1;
+        Chessboard[0][j] = '1' + j - 1;
 
     for (i = 1; i < N; i++)
-        A[i][2] = 'P';
-    A[1][1] = 'R';
-    A[8][1] = 'R';
-    A[2][1] = 'N';
-    A[7][1] = 'N';
-    A[3][1] = 'B';
-    A[6][1] = 'B';
-    A[4][1] = 'Q';
-    A[5][1] = 'K';
+        Chessboard[i][2] = 'P';
+    Chessboard[1][1] = 'R';
+    Chessboard[8][1] = 'R';
+    Chessboard[2][1] = 'N';
+    Chessboard[7][1] = 'N';
+    Chessboard[3][1] = 'B';
+    Chessboard[6][1] = 'B';
+    Chessboard[4][1] = 'Q';
+    Chessboard[5][1] = 'K';
 
     for (i = 1; i < N; i++)
-        A[i][7] = 'p';
-    A[1][8] = 'r';
-    A[8][8] = 'r';
-    A[2][8] = 'n';
-    A[7][8] = 'n';
-    A[3][8] = 'b';
-    A[6][8] = 'b';
-    A[4][8] = 'q';
-    A[5][8] = 'k';
+        Chessboard[i][7] = 'p';
+    Chessboard[1][8] = 'r';
+    Chessboard[8][8] = 'r';
+    Chessboard[2][8] = 'n';
+    Chessboard[7][8] = 'n';
+    Chessboard[3][8] = 'b';
+    Chessboard[6][8] = 'b';
+    Chessboard[4][8] = 'q';
+    Chessboard[5][8] = 'k';
 }
 
-void PrintChessboard(char A[N][N])
+void PrintChessboard(char Chessboard[N][N])
 {
     int i, j;
     for (j = 8; j >= 0; j--) {
         for (i = 0; i <= 8; i++) {
-            printf("%c ", A[i][j]);
+            printf("%c ", Chessboard[i][j]);
         }
         printf("\n");
     }
@@ -136,7 +136,7 @@ int main()
 {
     FILE* InputFile;
     int code, console = 0, txt = 1, html = 0;
-    char A[N][N], string[S];
+    char Chessboard[N][N], string[S];
     do {
         fgets(string, S, stdin);
         string[strcspn(string, "\n")] = 0;
@@ -156,8 +156,8 @@ int main()
         ChangeFlag(code, console, txt, html);
     } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
 
-    RefreshChessboard(A);
-    PrintChessboard(A);
+    RefreshChessboard(Chessboard);
+    PrintChessboard(Chessboard);
 
     fclose(InputFile);
     return 0;
