@@ -130,6 +130,34 @@ int DefineCommand(char command[S])
     return code;
 }
 
+int DoMove(
+        char Chessboard[N][N],
+        Square square1,
+        Square square2,
+        int piece,
+        int turn,
+        int movetype,
+        int moveend)
+{
+    int code = 0;
+    code = CheckPieceExistence(Chessboard, square1, piece, turn);
+    if (code == 0) {
+        code = CheckMove(
+                Chessboard, square1, square2, piece, turn, movetype, moveend);
+        if (code == 0) {
+            if ((moveend > 0) && (moveend < 5))
+                piece = moveend;
+            Chessboard[square1.file][square1.rank] = 32;
+            Chessboard[square2.file][square2.rank]
+                    = DefinePieceChar(piece, turn);
+        }
+    }
+
+    printf("\n");
+    PrintChessboard(Chessboard);
+    return code;
+}
+
 int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
 {
     Square square1, square2;
