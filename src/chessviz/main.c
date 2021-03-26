@@ -700,46 +700,47 @@ void PrintError(int code)
         printf("ERROR : Actual move type doesn't match given move type\n");
         break;
     }
+}
 
-    int main()
-    {
-        FILE* InputFile;
-        int code, console = 0, txt = 1, html = 0;
-        char Chessboard[N][N], string[S];
-        do {
-            fgets(string, S, stdin);
-            string[strcspn(string, "\n")] = 0;
-            code = DefineCommand(string);
-            if (code == -1)
-                break;
-            if (code == 1) {
-                strcpy(string, "stdin.txt");
-                code = 0;
-            }
-            if (code == 0) {
-                InputFile = fopen(string, "r");
-                if (InputFile == NULL)
-                    code = 13;
-            }
-            PrintError(code);
-            ChangeFlag(code, console, txt, html);
-        } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
-
-        RefreshChessboard(Chessboard);
-        PrintChessboard(Chessboard);
-        printf("\n\n\n");
-
-        while (1) {
-            if (fgets(string, S, InputFile) == NULL)
-                break;
-            string[strcspn(string, "\n")] = 0;
-            puts(string);
-            code = InputLine(Chessboard, string);
-            PrintError(code);
-            if (code > 0)
-                break;
+int main()
+{
+    FILE* InputFile;
+    int code, console = 0, txt = 1, html = 0;
+    char Chessboard[N][N], string[S];
+    do {
+        fgets(string, S, stdin);
+        string[strcspn(string, "\n")] = 0;
+        code = DefineCommand(string);
+        if (code == -1)
+            break;
+        if (code == 1) {
+            strcpy(string, "stdin.txt");
+            code = 0;
         }
+        if (code == 0) {
+            InputFile = fopen(string, "r");
+            if (InputFile == NULL)
+                code = 13;
+        }
+        PrintError(code);
+        ChangeFlag(code, console, txt, html);
+    } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
 
-        fclose(InputFile);
-        return 0;
+    RefreshChessboard(Chessboard);
+    PrintChessboard(Chessboard);
+    printf("\n\n\n");
+
+    while (1) {
+        if (fgets(string, S, InputFile) == NULL)
+            break;
+        string[strcspn(string, "\n")] = 0;
+        puts(string);
+        code = InputLine(Chessboard, string);
+        PrintError(code);
+        if (code > 0)
+            break;
     }
+
+    fclose(InputFile);
+    return 0;
+}
