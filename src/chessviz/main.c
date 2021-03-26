@@ -36,6 +36,23 @@ Square DefineSquare(char string[2])
     return square;
 }
 
+int DefinePieceCapture(char piece, int turn)
+{
+    int color, code;
+
+    if (piece > 95)
+        color = 1;
+    else
+        color = 0;
+
+    if (color != turn)
+        code = 1;
+    else
+        code = 0;
+
+    return code;
+}
+
 void ShiftString(char* string, int step)
 {
     int i;
