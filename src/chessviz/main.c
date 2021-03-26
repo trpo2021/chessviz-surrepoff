@@ -182,7 +182,6 @@ int DefinePiece(char piece, int turn)
     return code;
 }
 
-
 int DefineFlag(char flag[S])
 {
     int code = 11;
@@ -252,6 +251,16 @@ int DefineCommand(char command[S])
 int CheckCastling(int option, int turn)
 {
     return 0;
+}
+
+int CheckPieceExistence(
+        char Chessboard[N][N], Square square, int piece, int turn)
+{
+    int code = 300, piecechar;
+    piecechar = DefinePieceChar(piece, turn);
+    if (Chessboard[square.file][square.rank] == piecechar)
+        code = 0;
+    return code;
 }
 
 int DoMove(
