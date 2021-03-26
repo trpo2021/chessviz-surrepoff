@@ -124,6 +124,77 @@ int DefineCommand(char command[S])
     return code;
 }
 
+int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
+{
+    Square square1, square2;
+    char square[2];
+    char Move[S / 2];
+    strcpy(Move, MoveOriginal);
+    int code = 0, piece = -1, movetype, moveend = 0, i;
+    if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
+        if (strcmp(Move, "0-0-0") == 0)
+            code = CheckCastling(1, turn);
+        if (strcmp(Move, "0-0") == 0)
+            code = CheckCastling(0, turn);
+    } else {
+        if ((Move[0] >= 97) && (Move[0] <= 104)) {
+            piece = 0;
+
+        } else {
+            piece = DefinePiece(Move[0], turn);
+            if (piece > 5)
+                code = piece;
+
+            ShiftString(Move, 1);
+        }
+
+        if (code == 0) {
+            strncpy(square, Move, 2);
+            square1 = DefineSquare(square);
+            if ((square1.file == -1) || (square1.rank == -1))
+                code = 203;
+
+            if (code == 0) {
+                ShiftString(Move, 2);
+
+                movetype = DefineMoveType(Move[0]);
+                if (movetype == 204)
+                    code = 204;
+
+                if (code == 0) {
+                    ShiftString(Move, 1);
+
+                    strncpy(square, Move, 2);
+                    square2 = DefineSquare(square);
+                    if ((square2.file == -1) || (square2.rank == -1))
+                        code = 205;
+
+                    if (code == 0) {
+                        if (Move[2] != '\0') {
+                            ShiftString(Move, 2);
+                            moveend = DefineMoveEnd(Move, piece, turn);
+                            if (moveend > 10)
+                                code = moveend;
+                        }
+                        if (code == 0) {
+                            code = DoMove(
+                                    Chessboard,
+                                    square1,
+                                    square2,
+                                    piece,
+                                    turn,
+                                    movetype,
+                                    moveend);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return code;
+}
+
 int InputLine(char Chessboard[N][N], char line[S])
 {
     int code = 0, i;
