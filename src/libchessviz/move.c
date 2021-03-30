@@ -298,12 +298,13 @@ void PossibleMovesKing(
         PossibleMoves[square.file][square.rank - 1] = 2;
 }
 
-/*
 void PossibleMovesQueen(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
+    PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+    PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+    PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
 }
-*/
 
 void FillInPossibleMoves(
         int PossibleMoves[9][9],
@@ -327,7 +328,7 @@ void FillInPossibleMoves(
         PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
         break;
     case 4:
-        // PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
+        PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
         break;
     case 5:
         PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
