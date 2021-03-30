@@ -13,15 +13,30 @@ void PossibleMovesPawn(
         int turn,
         int moveend);
 void PossibleMovesBishop(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int turn);
 void PossibleMovesKnight(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int turn);
 void PossibleMovesRook(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int turn);
 void PossibleMovesQueen(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int turn);
 void PossibleMovesKing(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int turn);
 void FillInPossibleMoves(
         int PossibleMoves[9][9],
         char Chessboard[9][9],
@@ -48,5 +63,5 @@ int DoMove(
         int turn,
         int movetype,
         int moveend);
-        
+
 #endif /* MOVE_H */

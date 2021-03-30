@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include <libchessviz/move.h>
-#include <libchessviz/helper.h>
 #include <libchessviz/board.h>
+#include <libchessviz/helper.h>
+#include <libchessviz/move.h>
 
 int DefinePieceCapture(char piece, int turn)
 {
@@ -47,7 +47,6 @@ int DefinePieceChar(int piece, int turn)
     code += turn * 32;
     return code;
 }
-
 
 void RefreshPossibleMoves(int PossibleMoves[9][9])
 {
@@ -139,19 +138,19 @@ void FillInPossibleMoves(
         PossibleMovesPawn(PossibleMoves, Chessboard, square, turn, moveend);
         break;
     case 1:
-        //PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+        // PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
         break;
     case 2:
-        //PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
+        // PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
         break;
     case 3:
-        //PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+        // PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
         break;
     case 4:
-        //PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
+        // PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
         break;
     case 5:
-        //PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
+        // PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
         break;
     }
 }

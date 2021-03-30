@@ -1,7 +1,7 @@
-#include <string.h>
 #include <libchessviz/board_input.h>
-#include <libchessviz/move.h>
 #include <libchessviz/helper.h>
+#include <libchessviz/move.h>
+#include <string.h>
 
 int DefineFile(char file)
 {
