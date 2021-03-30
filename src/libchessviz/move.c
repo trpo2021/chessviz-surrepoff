@@ -271,6 +271,8 @@ void PossibleMovesRook(
 void PossibleMovesKing(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
+    int i;
+
     for (i = 1; i >= -1; i--) {
         if (Chessboard[square.file + 1][square.rank + i] == 32)
             PossibleMoves[square.file + 1][square.rank + i] = 1;
