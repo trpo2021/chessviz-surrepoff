@@ -158,9 +158,56 @@ void PossibleMovesBishop(
     }
 }
 
-/*void PossibleMovesKnight(
+void PossibleMovesKnight(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
+    if (Chessboard[square.file + 1][square.rank + 2] == 32)
+        PossibleMoves[square.file + 1][square.rank + 2] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file + 1][square.rank + 2], turn))
+        PossibleMoves[square.file + 1][square.rank + 2] = 2;
+
+    if (Chessboard[square.file - 1][square.rank + 2] == 32)
+        PossibleMoves[square.file - 1][square.rank + 2] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file - 1][square.rank + 2], turn))
+        PossibleMoves[square.file - 1][square.rank + 2] = 2;
+
+    if (Chessboard[square.file + 1][square.rank - 2] == 32)
+        PossibleMoves[square.file + 1][square.rank - 2] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file + 1][square.rank - 2], turn))
+        PossibleMoves[square.file + 1][square.rank - 2] = 2;
+
+    if (Chessboard[square.file - 1][square.rank - 2] == 32)
+        PossibleMoves[square.file - 1][square.rank - 2] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file - 1][square.rank - 2], turn))
+        PossibleMoves[square.file - 1][square.rank - 2] = 2;
+
+    if (Chessboard[square.file + 2][square.rank + 1] == 32)
+        PossibleMoves[square.file + 2][square.rank + 1] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file + 2][square.rank + 1], turn))
+        PossibleMoves[square.file + 2][square.rank + 1] = 2;
+
+    if (Chessboard[square.file + 2][square.rank - 1] == 32)
+        PossibleMoves[square.file + 2][square.rank - 1] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file + 2][square.rank - 1], turn))
+        PossibleMoves[square.file + 2][square.rank - 1] = 2;
+
+    if (Chessboard[square.file - 2][square.rank + 1] == 32)
+        PossibleMoves[square.file - 2][square.rank + 1] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file - 2][square.rank + 1], turn))
+        PossibleMoves[square.file - 2][square.rank + 1] = 2;
+
+    if (Chessboard[square.file - 2][square.rank - 1] == 32)
+        PossibleMoves[square.file - 2][square.rank - 1] = 1;
+    else if (DefinePieceCapture(
+                     Chessboard[square.file - 2][square.rank - 1], turn))
+        PossibleMoves[square.file - 2][square.rank - 1] = 2;
 }
 
 void PossibleMovesRook(
@@ -174,17 +221,19 @@ void PossibleMovesQueen(
 }
 
 void PossibleMovesKing(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
-{
-}*/
-
-void FillInPossibleMoves(
         int PossibleMoves[9][9],
         char Chessboard[9][9],
         Square square,
-        int piece,
-        int turn,
-        int moveend)
+        int turn){}
+        * /
+
+        void FillInPossibleMoves(
+                int PossibleMoves[9][9],
+                char Chessboard[9][9],
+                Square square,
+                int piece,
+                int turn,
+                int moveend)
 {
     switch (piece) {
     case 0:
