@@ -1,11 +1,8 @@
-#inculde <libchessviz/move.h>
-const int N = 9;
+#include <stdio.h>
 
-typedef struct Square {
-    int file;
-    int rank;
-} Square;
-// file = x, rank = y
+#include <libchessviz/move.h>
+#include <libchessviz/helper.h>
+#include <libchessviz/board.h>
 
 int DefinePieceCapture(char piece, int turn)
 {
@@ -104,7 +101,7 @@ void PossibleMovesPawn(
     }
 }
 
-void PossibleMovesBishop(
+/*void PossibleMovesBishop(
         int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
 {
 }
@@ -127,7 +124,7 @@ void PossibleMovesQueen(
 void PossibleMovesKing(
         int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
 {
-}
+}*/
 
 void FillInPossibleMoves(
         int PossibleMoves[N][N],
@@ -142,19 +139,19 @@ void FillInPossibleMoves(
         PossibleMovesPawn(PossibleMoves, Chessboard, square, turn, moveend);
         break;
     case 1:
-        PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
         break;
     case 2:
-        PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
         break;
     case 3:
-        PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
         break;
     case 4:
-        PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
         break;
     case 5:
-        PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
         break;
     }
 }
@@ -199,10 +196,10 @@ int CheckMove(
     return code;
 }
 
-int CheckCastling(int option, int turn)
+/*int CheckCastling(int option, int turn)
 {
     return 0;
-}
+}*/
 
 int DoMove(
         char Chessboard[N][N],

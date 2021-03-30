@@ -1,12 +1,5 @@
 #pragma once
-#include guard
-const int N = 9;
-
-typedef struct Square {
-    int file;
-    int rank;
-} Square;
-// file = x, rank = y
+#include <libchessviz/helper.h>
 
 int DefinePieceCapture(char piece, int turn);
 int DefinePieceChar(int piece, int turn);

@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <libchessviz/helper.h>
 #include <libchessviz/command.h>
 #include <libchessviz/board.h>
 #include <libchessviz/board_input.h>
-#inculde <libchessviz/move.h>
-
-const int N = 9;
-const int S = 32;
+#include <libchessviz/move.h>
 
 void PrintError(int code)
 {
@@ -70,7 +68,7 @@ void PrintError(int code)
 int main()
 {
     FILE* InputFile;
-    int code, console = 0, txt = 1, html = 0;
+    int code, console = 0, txt = 0, html = 0;
     char Chessboard[N][N], string[S];
     do {
         fgets(string, S, stdin);

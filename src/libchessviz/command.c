@@ -1,20 +1,21 @@
 #include <string.h>
 #include <libchessviz/command.h>
-const int S = 32;
+#include <libchessviz/helper.h>
 
 void ChangeFlag(int code, int console, int txt, int html)
 {
     switch (code) {
     case 2:
-        console = 1;
+        if (console) console = 0;
+        else console = 1;
         break;
     case 3:
-        txt = 1;
-        html = 0;
+        if (txt) txt = 0;
+        else txt = 1;
         break;
     case 4:
-        html = 1;
-        txt = 0;
+        if (html) html = 0;
+        else html = 1;
         break;
     }
 }

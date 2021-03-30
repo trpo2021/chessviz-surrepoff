@@ -1,22 +1,7 @@
 #include <string.h>
 #include <libchessviz/board_input.h>
-const int N = 9;
-const int S = 32;
-
-typedef struct Square {
-    int file;
-    int rank;
-} Square;
-// file = x, rank = y
-
-void ShiftString(char* string, int step)
-{
-    int i;
-    for (i = 0; i < strlen(string) - (step - 1); i++)
-        string[i] = string[i + step];
-    for (i = 0; i < step; i++)
-        string[strlen(string)] = '\0';
-}
+#include <libchessviz/move.h>
+#include <libchessviz/helper.h>
 
 int DefineFile(char file)
 {
@@ -183,10 +168,10 @@ int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
     strcpy(Move, MoveOriginal);
     int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
-        if (strcmp(Move, "0-0-0") == 0)
+        /*if (strcmp(Move, "0-0-0") == 0)
             code = CheckCastling(1, turn);
         if (strcmp(Move, "0-0") == 0)
-            code = CheckCastling(0, turn);
+            code = CheckCastling(0, turn);*/
     } else {
         if ((Move[0] >= 97) && (Move[0] <= 104)) {
             piece = 0;
@@ -248,7 +233,8 @@ int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
 
 int InputLine(char Chessboard[N][N], char line[S])
 {
-    int code = 0, i;
+    int code = 0;
+    long long unsigned int i;
     char MoveNumber[S / 4], WhiteMove[S / 2], BlackMove[S / 2];
 
     for (i = 0; i < strcspn(line, "."); i++) {
