@@ -213,27 +213,81 @@ void PossibleMovesKnight(
 void PossibleMovesRook(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
+    int i;
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file][square.rank + i] == 32)
+            PossibleMoves[square.file][square.rank + i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file][square.rank + i], turn))
+                PossibleMoves[square.file][square.rank + i] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file][square.rank - i] == 32)
+            PossibleMoves[square.file][square.rank - i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file][square.rank - i], turn))
+                PossibleMoves[square.file][square.rank - i] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file + i][square.rank] == 32)
+            PossibleMoves[square.file + i][square.rank] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file + i][square.rank], turn))
+                PossibleMoves[square.file + i][square.rank] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file - i][square.rank] == 32)
+            PossibleMoves[square.file - i][square.rank] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file - i][square.rank], turn))
+                PossibleMoves[square.file - i][square.rank] = 2;
+            break;
+        }
+    }
 }
 
-void PossibleMovesQueen(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
-{
-}
-
+/*
 void PossibleMovesKing(
         int PossibleMoves[9][9],
         char Chessboard[9][9],
         Square square,
         int turn){}
-        * /
 
-        void FillInPossibleMoves(
-                int PossibleMoves[9][9],
-                char Chessboard[9][9],
-                Square square,
-                int piece,
-                int turn,
-                int moveend)
+void PossibleMovesQueen(
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+{
+}
+*/
+
+void FillInPossibleMoves(
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
+        Square square,
+        int piece,
+        int turn,
+        int moveend)
 {
     switch (piece) {
     case 0:
@@ -243,10 +297,10 @@ void PossibleMovesKing(
         PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
         break;
     case 2:
-        // PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
+        PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
         break;
     case 3:
-        // PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+        PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
         break;
     case 4:
         // PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
