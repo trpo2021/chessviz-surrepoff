@@ -1,4 +1,6 @@
 *.o
+*.d
+*.a
 .main.c.swp
 main.c~
 #main.c#
