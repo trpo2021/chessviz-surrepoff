@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <libchessviz/helper.h>
-#include <libchessviz/command.h>
 #include <libchessviz/board.h>
 #include <libchessviz/board_input.h>
+#include <libchessviz/command.h>
+#include <libchessviz/helper.h>
 #include <libchessviz/move.h>
 
 void PrintError(int code)

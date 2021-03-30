@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include <libchessviz/helper.h>
 #include <libchessviz/board.h>
+#include <libchessviz/helper.h>
 
 void RefreshChessboard(char Chessboard[N][N])
 {

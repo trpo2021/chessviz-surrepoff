@@ -13,15 +13,30 @@ void PossibleMovesPawn(
         int turn,
         int moveend);
 void PossibleMovesBishop(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn);
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int turn);
 void PossibleMovesKnight(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn);
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int turn);
 void PossibleMovesRook(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn);
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int turn);
 void PossibleMovesQueen(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn);
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int turn);
 void PossibleMovesKing(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn);
+        int PossibleMoves[N][N],
+        char Chessboard[N][N],
+        Square square,
+        int turn);
 void FillInPossibleMoves(
         int PossibleMoves[N][N],
         char Chessboard[N][N],
@@ -48,5 +63,5 @@ int DoMove(
         int turn,
         int movetype,
         int moveend);
-        
+
 #endif /* MOVE_H */
