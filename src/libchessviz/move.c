@@ -100,12 +100,65 @@ void PossibleMovesPawn(
     }
 }
 
-/*void PossibleMovesBishop(
+void PossibleMovesBishop(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
+    int i;
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file + i][square.rank + i] == 32)
+            PossibleMoves[square.file + i][square.rank + i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file + i][square.rank + i], turn))
+                PossibleMoves[square.file + i][square.rank + i] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file - i][square.rank + i] == 32)
+            PossibleMoves[square.file - i][square.rank + i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file - i][square.rank + i], turn))
+                PossibleMoves[square.file - i][square.rank + i] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file + i][square.rank - i] == 32)
+            PossibleMoves[square.file + i][square.rank - i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file + i][square.rank - i], turn))
+                PossibleMoves[square.file + i][square.rank - i] = 2;
+            break;
+        }
+    }
+
+    i = 0;
+    while (1) {
+        i++;
+        if (Chessboard[square.file - i][square.rank - i] == 32)
+            PossibleMoves[square.file - i][square.rank - i] = 1;
+        else {
+            if (DefinePieceCapture(
+                        Chessboard[square.file - i][square.rank - i], turn))
+                PossibleMoves[square.file - i][square.rank - i] = 2;
+            break;
+        }
+    }
 }
 
-void PossibleMovesKnight(
+/*void PossibleMovesKnight(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }
@@ -138,7 +191,7 @@ void FillInPossibleMoves(
         PossibleMovesPawn(PossibleMoves, Chessboard, square, turn, moveend);
         break;
     case 1:
-        // PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+        PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
         break;
     case 2:
         // PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
