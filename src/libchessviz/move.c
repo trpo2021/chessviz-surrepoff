@@ -1,4 +1,4 @@
-#include "move.h"
+#inculde <libchessviz/move.h>
 const int N = 9;
 
 typedef struct Square {

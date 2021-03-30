@@ -1,5 +1,5 @@
 #include <string.h>
-#include "command.h"
+#include <libchessviz/command.h>
 const int S = 32;
 
 void ChangeFlag(int code, int console, int txt, int html)

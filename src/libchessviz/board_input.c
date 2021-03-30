@@ -1,5 +1,5 @@
 #include <string.h>
-#include "board_input.h"
+#include <libchessviz/board_input.h>
 const int N = 9;
 const int S = 32;
 
