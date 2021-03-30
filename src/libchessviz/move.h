@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MOVE_H
+#define MOVE_H
 #include <libchessviz/helper.h>
 
 int DefinePieceCapture(char piece, int turn);
@@ -46,3 +48,5 @@ int DoMove(
         int turn,
         int movetype,
         int moveend);
+        
+#endif /* MOVE_H */
