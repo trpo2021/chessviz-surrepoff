@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "command.h"
-#include "board.h"
-#include "board_input.h"
-#inculde "move.h"
+#include <libchessviz/command.h>
+#include <libchessviz/board.h>
+#include <libchessviz/board_input.h>
+#inculde <libchessviz/move.h>
 
 const int N = 9;
 const int S = 32;
