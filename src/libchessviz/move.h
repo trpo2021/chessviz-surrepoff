@@ -5,49 +5,34 @@
 
 int DefinePieceCapture(char piece, int turn);
 int DefinePieceChar(int piece, int turn);
-void RefreshPossibleMoves(int PossibleMoves[N][N]);
+void RefreshPossibleMoves(int PossibleMoves[9][9]);
 void PossibleMovesPawn(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
         Square square,
         int turn,
         int moveend);
 void PossibleMovesBishop(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
-        Square square,
-        int turn);
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
 void PossibleMovesKnight(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
-        Square square,
-        int turn);
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
 void PossibleMovesRook(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
-        Square square,
-        int turn);
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
 void PossibleMovesQueen(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
-        Square square,
-        int turn);
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
 void PossibleMovesKing(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
-        Square square,
-        int turn);
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn);
 void FillInPossibleMoves(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
         Square square,
         int piece,
         int turn,
         int moveend);
 int CheckPieceExistence(
-        char Chessboard[N][N], Square square, int piece, int turn);
+        char Chessboard[9][9], Square square, int piece, int turn);
 int CheckMove(
-        char Chessboard[N][N],
+        char Chessboard[9][9],
         Square square1,
         Square square2,
         int piece,
@@ -56,12 +41,12 @@ int CheckMove(
         int moveend);
 int CheckCastling(int option, int turn);
 int DoMove(
-        char Chessboard[N][N],
+        char Chessboard[9][9],
         Square square1,
         Square square2,
         int piece,
         int turn,
         int movetype,
         int moveend);
-
+        
 #endif /* MOVE_H */

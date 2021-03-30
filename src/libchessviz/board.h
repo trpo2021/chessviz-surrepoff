@@ -3,7 +3,7 @@
 #define BOARD_H
 #include <libchessviz/helper.h>
 
-void RefreshChessboard(char Chessboard[N][N]);
-void PrintChessboard(char Chessboard[N][N]);
+void RefreshChessboard(char Chessboard[9][9]);
+void PrintChessboard(char Chessboard[9][9]);
 
 #endif /* BOARD_H */

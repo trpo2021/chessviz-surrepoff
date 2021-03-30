@@ -4,7 +4,7 @@
 #include <libchessviz/helper.h>
 
 void ChangeFlag(int code, int console, int txt, int html);
-int DefineFlag(char flag[S]);
-int DefineCommand(char command[S]);
+int DefineFlag(char flag[64]);
+int DefineCommand(char command[64]);
 
 #endif /* COMMAND_H */

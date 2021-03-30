@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-#include <libchessviz/board.h>
 #include <libchessviz/helper.h>
+#include <libchessviz/board.h>
 
-void RefreshChessboard(char Chessboard[N][N])
+void RefreshChessboard(char Chessboard[9][9])
 {
     int i, j;
-    for (i = 0; i < N; i++)
-        for (j = 0; j < N; j++)
+    for (i = 0; i < 9; i++)
+        for (j = 0; j < 9; j++)
             Chessboard[i][j] = ' ';
-    for (i = 1; i < N; i++)
+    for (i = 1; i < 9; i++)
         Chessboard[i][0] = 'a' + i - 1;
-    for (j = 1; j < N; j++)
+    for (j = 1; j < 9; j++)
         Chessboard[0][j] = '1' + j - 1;
 
-    for (i = 1; i < N; i++)
+    for (i = 1; i < 9; i++)
         Chessboard[i][2] = 'P';
     Chessboard[1][1] = 'R';
     Chessboard[8][1] = 'R';
@@ -25,7 +25,7 @@ void RefreshChessboard(char Chessboard[N][N])
     Chessboard[4][1] = 'Q';
     Chessboard[5][1] = 'K';
 
-    for (i = 1; i < N; i++)
+    for (i = 1; i < 9; i++)
         Chessboard[i][7] = 'p';
     Chessboard[1][8] = 'r';
     Chessboard[8][8] = 'r';
@@ -37,7 +37,7 @@ void RefreshChessboard(char Chessboard[N][N])
     Chessboard[5][8] = 'k';
 }
 
-void PrintChessboard(char Chessboard[N][N])
+void PrintChessboard(char Chessboard[9][9])
 {
     int i, j;
     for (j = 8; j >= 0; j--) {

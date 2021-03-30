@@ -1,7 +1,7 @@
-#include <libchessviz/board_input.h>
-#include <libchessviz/helper.h>
-#include <libchessviz/move.h>
 #include <string.h>
+#include <libchessviz/board_input.h>
+#include <libchessviz/move.h>
+#include <libchessviz/helper.h>
 
 int DefineFile(char file)
 {
@@ -160,11 +160,11 @@ int DefineMoveEnd(char* Move, int piece, int turn)
     return code;
 }
 
-int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
+int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
 {
     Square square1, square2;
     char square[2];
-    char Move[S / 2];
+    char Move[16];
     strcpy(Move, MoveOriginal);
     int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
@@ -231,11 +231,11 @@ int InputMove(char Chessboard[N][N], char MoveOriginal[S / 2], int turn)
     return code;
 }
 
-int InputLine(char Chessboard[N][N], char line[S])
+int InputLine(char Chessboard[9][9], char line[32])
 {
     int code = 0;
     long long unsigned int i;
-    char MoveNumber[S / 4], WhiteMove[S / 2], BlackMove[S / 2];
+    char MoveNumber[8], WhiteMove[16], BlackMove[16];
 
     for (i = 0; i < strcspn(line, "."); i++) {
         if (!((line[i] >= 48) && (line[i] <= 57))) {
@@ -246,7 +246,7 @@ int InputLine(char Chessboard[N][N], char line[S])
 
     if (code != 100) {
         strncpy(MoveNumber, line, strcspn(line, ".") + 1);
-        for (i = strcspn(line, ".") + 1; i < S / 4; i++)
+        for (i = strcspn(line, ".") + 1; i < 8; i++)
             MoveNumber[i] = '\0';
     }
 
@@ -263,7 +263,7 @@ int InputLine(char Chessboard[N][N], char line[S])
 
             if (strcspn(line, " ") < strlen(line) - 1) {
                 strncpy(WhiteMove, line, strcspn(line, " "));
-                for (i = strcspn(line, " "); i < S / 2; i++)
+                for (i = strcspn(line, " "); i < 16; i++)
                     WhiteMove[i] = '\0';
 
                 for (i = 0; i < strlen(line) - strlen(WhiteMove); i++)
@@ -277,14 +277,14 @@ int InputLine(char Chessboard[N][N], char line[S])
                     ShiftString(line, 1);
 
                     strncpy(BlackMove, line, strlen(line));
-                    for (i = strlen(line); i < S / 2; i++)
+                    for (i = strlen(line); i < 16; i++)
                         BlackMove[i] = '\0';
 
                     code = InputMove(Chessboard, BlackMove, 1);
                 }
             } else {
                 strncpy(WhiteMove, line, strlen(line) - 1);
-                for (i = strcspn(line, " "); i < S / 2; i++)
+                for (i = strcspn(line, " "); i < 16; i++)
                     WhiteMove[i] = '\0';
 
                 code = InputMove(Chessboard, WhiteMove, 0);

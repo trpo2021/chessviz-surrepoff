@@ -69,9 +69,9 @@ int main()
 {
     FILE* InputFile;
     int code, console = 0, txt = 0, html = 0;
-    char Chessboard[N][N], string[S];
+    char Chessboard[9][9], string[64];
     do {
-        fgets(string, S, stdin);
+        fgets(string, 64, stdin);
         string[strcspn(string, "\n")] = 0;
         code = DefineCommand(string);
         if (code == -1)
@@ -94,7 +94,7 @@ int main()
     printf("\n\n\n");
 
     while (1) {
-        if (fgets(string, S, InputFile) == NULL)
+        if (fgets(string, 32, InputFile) == NULL)
             break;
         string[strcspn(string, "\n")] = 0;
         puts(string);

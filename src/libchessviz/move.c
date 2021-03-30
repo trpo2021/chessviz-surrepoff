@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include <libchessviz/board.h>
-#include <libchessviz/helper.h>
 #include <libchessviz/move.h>
+#include <libchessviz/helper.h>
+#include <libchessviz/board.h>
 
 int DefinePieceCapture(char piece, int turn)
 {
@@ -48,17 +48,18 @@ int DefinePieceChar(int piece, int turn)
     return code;
 }
 
-void RefreshPossibleMoves(int PossibleMoves[N][N])
+
+void RefreshPossibleMoves(int PossibleMoves[9][9])
 {
     int i, j;
-    for (i = 0; i < N; i++)
-        for (j = 0; j < N; j++)
+    for (i = 0; i < 9; i++)
+        for (j = 0; j < 9; j++)
             PossibleMoves[i][j] = 0;
 }
 
 void PossibleMovesPawn(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
         Square square,
         int turn,
         int moveend)
@@ -101,33 +102,33 @@ void PossibleMovesPawn(
 }
 
 /*void PossibleMovesBishop(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }
 
 void PossibleMovesKnight(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }
 
 void PossibleMovesRook(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }
 
 void PossibleMovesQueen(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }
 
 void PossibleMovesKing(
-        int PossibleMoves[N][N], char Chessboard[N][N], Square square, int turn)
+        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
 }*/
 
 void FillInPossibleMoves(
-        int PossibleMoves[N][N],
-        char Chessboard[N][N],
+        int PossibleMoves[9][9],
+        char Chessboard[9][9],
         Square square,
         int piece,
         int turn,
@@ -138,25 +139,25 @@ void FillInPossibleMoves(
         PossibleMovesPawn(PossibleMoves, Chessboard, square, turn, moveend);
         break;
     case 1:
-        // PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
         break;
     case 2:
-        // PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesKnight(PossibleMoves, Chessboard, square, turn);
         break;
     case 3:
-        // PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
         break;
     case 4:
-        // PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesQueen(PossibleMoves, Chessboard, square, turn);
         break;
     case 5:
-        // PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
+        //PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
         break;
     }
 }
 
 int CheckPieceExistence(
-        char Chessboard[N][N], Square square, int piece, int turn)
+        char Chessboard[9][9], Square square, int piece, int turn)
 {
     int code = 300, piecechar;
     piecechar = DefinePieceChar(piece, turn);
@@ -166,7 +167,7 @@ int CheckPieceExistence(
 }
 
 int CheckMove(
-        char Chessboard[N][N],
+        char Chessboard[9][9],
         Square square1,
         Square square2,
         int piece,
@@ -175,7 +176,7 @@ int CheckMove(
         int moveend)
 {
     int code = 301;
-    int PossibleMoves[N][N];
+    int PossibleMoves[9][9];
     RefreshPossibleMoves(PossibleMoves);
     FillInPossibleMoves(
             PossibleMoves, Chessboard, square1, piece, turn, moveend);
@@ -201,7 +202,7 @@ int CheckMove(
 }*/
 
 int DoMove(
-        char Chessboard[N][N],
+        char Chessboard[9][9],
         Square square1,
         Square square2,
         int piece,

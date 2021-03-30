@@ -1,32 +1,26 @@
+#include <string.h>
 #include <libchessviz/command.h>
 #include <libchessviz/helper.h>
-#include <string.h>
 
 void ChangeFlag(int code, int console, int txt, int html)
 {
     switch (code) {
     case 2:
-        if (console)
-            console = 0;
-        else
-            console = 1;
+        if (console) console = 0;
+        else console = 1;
         break;
     case 3:
-        if (txt)
-            txt = 0;
-        else
-            txt = 1;
+        if (txt) txt = 0;
+        else txt = 1;
         break;
     case 4:
-        if (html)
-            html = 0;
-        else
-            html = 1;
+        if (html) html = 0;
+        else html = 1;
         break;
     }
 }
 
-int DefineFlag(char flag[S])
+int DefineFlag(char flag[64])
 {
     int code = 11;
 
@@ -40,7 +34,7 @@ int DefineFlag(char flag[S])
     return code;
 }
 
-int DefineCommand(char command[S])
+int DefineCommand(char command[64])
 {
     int length = strlen(command), i, code = 0;
 
