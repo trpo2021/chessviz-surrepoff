@@ -140,6 +140,10 @@ int DefineMoveType(char Move)
 int DefineMoveEnd(char* Move, int piece, int turn)
 {
     int code = 206;
+    
+    if (strcmp(Move, " ") == 0) {
+        code = 0;
+    }
     if (strcmp(Move, "+") == 0) {
         code = 5;
     }
