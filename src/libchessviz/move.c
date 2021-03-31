@@ -78,21 +78,26 @@ void PossibleMovesPawn(
     else
         direction = 1;
 
-    if (Chessboard[square.file][square.rank + direction] == 32) {
+    if ((Chessboard[square.file][square.rank + direction] == 32)
+        && (!CheckSquareBoard(square.file, square.rank + direction))) {
         PossibleMoves[square.file][square.rank + direction] = 1;
         if (((square.rank == 2) && (!turn)) || ((square.rank == 7) && (turn)))
             if (Chessboard[square.file][square.rank + 2 * direction] == 32)
                 PossibleMoves[square.file][square.rank + 2 * direction] = 1;
     }
 
-    if (Chessboard[square.file + direction][square.rank + direction] != 32)
+    if ((Chessboard[square.file + direction][square.rank + direction] != 32)
+        && (!CheckSquareBoard(
+                square.file + direction, square.rank + direction)))
         if (DefinePieceCapture(
                     Chessboard[square.file + direction]
                               [square.rank + direction],
                     turn))
             PossibleMoves[square.file + direction][square.rank + direction] = 2;
 
-    if (Chessboard[square.file - direction][square.rank + direction] != 32)
+    if ((Chessboard[square.file - direction][square.rank + direction] != 32)
+        && (!CheckSquareBoard(
+                square.file - direction, square.rank + direction)))
         if (DefinePieceCapture(
                     Chessboard[square.file - direction]
                               [square.rank + direction],
@@ -100,10 +105,14 @@ void PossibleMovesPawn(
             PossibleMoves[square.file - direction][square.rank + direction] = 2;
 
     if (moveend == 7) {
-        if (Chessboard[square.file + direction][square.rank + direction] == 32)
+        if ((Chessboard[square.file + direction][square.rank + direction] == 32)
+            && (!CheckSquareBoard(
+                    square.file + direction, square.rank + direction)))
             PossibleMoves[square.file + direction][square.rank + direction] = 2;
 
-        if (Chessboard[square.file - direction][square.rank + direction] == 32)
+        if ((Chessboard[square.file - direction][square.rank + direction] == 32)
+            && (!CheckSquareBoard(
+                    square.file - direction, square.rank + direction)))
             PossibleMoves[square.file - direction][square.rank + direction] = 2;
     }
 }
@@ -116,6 +125,10 @@ void PossibleMovesBishop(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file + i, square.rank + i))
+            break;
+
         if (Chessboard[square.file + i][square.rank + i] == 32)
             PossibleMoves[square.file + i][square.rank + i] = 1;
         else {
@@ -129,6 +142,10 @@ void PossibleMovesBishop(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file - i, square.rank + i))
+            break;
+
         if (Chessboard[square.file - i][square.rank + i] == 32)
             PossibleMoves[square.file - i][square.rank + i] = 1;
         else {
@@ -142,6 +159,10 @@ void PossibleMovesBishop(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file + i, square.rank - i))
+            break;
+
         if (Chessboard[square.file + i][square.rank - i] == 32)
             PossibleMoves[square.file + i][square.rank - i] = 1;
         else {
@@ -155,6 +176,10 @@ void PossibleMovesBishop(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file - i, square.rank - i))
+            break;
+
         if (Chessboard[square.file - i][square.rank - i] == 32)
             PossibleMoves[square.file - i][square.rank - i] = 1;
         else {
@@ -169,53 +194,69 @@ void PossibleMovesBishop(
 void PossibleMovesKnight(
         int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
 {
-    if (Chessboard[square.file + 1][square.rank + 2] == 32)
-        PossibleMoves[square.file + 1][square.rank + 2] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file + 1][square.rank + 2], turn))
-        PossibleMoves[square.file + 1][square.rank + 2] = 2;
+    if (!CheckSquareBoard(square.file + 1, square.rank + 2)) {
+        if (Chessboard[square.file + 1][square.rank + 2] == 32)
+            PossibleMoves[square.file + 1][square.rank + 2] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file + 1][square.rank + 2], turn))
+            PossibleMoves[square.file + 1][square.rank + 2] = 2;
+    }
 
-    if (Chessboard[square.file - 1][square.rank + 2] == 32)
-        PossibleMoves[square.file - 1][square.rank + 2] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file - 1][square.rank + 2], turn))
-        PossibleMoves[square.file - 1][square.rank + 2] = 2;
+    if (!CheckSquareBoard(square.file - 1, square.rank + 2)) {
+        if (Chessboard[square.file - 1][square.rank + 2] == 32)
+            PossibleMoves[square.file - 1][square.rank + 2] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file - 1][square.rank + 2], turn))
+            PossibleMoves[square.file - 1][square.rank + 2] = 2;
+    }
 
-    if (Chessboard[square.file + 1][square.rank - 2] == 32)
-        PossibleMoves[square.file + 1][square.rank - 2] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file + 1][square.rank - 2], turn))
-        PossibleMoves[square.file + 1][square.rank - 2] = 2;
+    if (!CheckSquareBoard(square.file + 1, square.rank - 2)) {
+        if (Chessboard[square.file + 1][square.rank - 2] == 32)
+            PossibleMoves[square.file + 1][square.rank - 2] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file + 1][square.rank - 2], turn))
+            PossibleMoves[square.file + 1][square.rank - 2] = 2;
+    }
 
-    if (Chessboard[square.file - 1][square.rank - 2] == 32)
-        PossibleMoves[square.file - 1][square.rank - 2] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file - 1][square.rank - 2], turn))
-        PossibleMoves[square.file - 1][square.rank - 2] = 2;
+    if (!CheckSquareBoard(square.file - 1, square.rank - 2)) {
+        if (Chessboard[square.file - 1][square.rank - 2] == 32)
+            PossibleMoves[square.file - 1][square.rank - 2] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file - 1][square.rank - 2], turn))
+            PossibleMoves[square.file - 1][square.rank - 2] = 2;
+    }
 
-    if (Chessboard[square.file + 2][square.rank + 1] == 32)
-        PossibleMoves[square.file + 2][square.rank + 1] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file + 2][square.rank + 1], turn))
-        PossibleMoves[square.file + 2][square.rank + 1] = 2;
+    if (!CheckSquareBoard(square.file + 2, square.rank + 1)) {
+        if (Chessboard[square.file + 2][square.rank + 1] == 32)
+            PossibleMoves[square.file + 2][square.rank + 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file + 2][square.rank + 1], turn))
+            PossibleMoves[square.file + 2][square.rank + 1] = 2;
+    }
 
-    if (Chessboard[square.file + 2][square.rank - 1] == 32)
-        PossibleMoves[square.file + 2][square.rank - 1] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file + 2][square.rank - 1], turn))
-        PossibleMoves[square.file + 2][square.rank - 1] = 2;
+    if (!CheckSquareBoard(square.file + 2, square.rank - 1)) {
+        if (Chessboard[square.file + 2][square.rank - 1] == 32)
+            PossibleMoves[square.file + 2][square.rank - 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file + 2][square.rank - 1], turn))
+            PossibleMoves[square.file + 2][square.rank - 1] = 2;
+    }
 
-    if (Chessboard[square.file - 2][square.rank + 1] == 32)
-        PossibleMoves[square.file - 2][square.rank + 1] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file - 2][square.rank + 1], turn))
-        PossibleMoves[square.file - 2][square.rank + 1] = 2;
+    if (!CheckSquareBoard(square.file - 2, square.rank + 1)) {
+        if (Chessboard[square.file - 2][square.rank + 1] == 32)
+            PossibleMoves[square.file - 2][square.rank + 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file - 2][square.rank + 1], turn))
+            PossibleMoves[square.file - 2][square.rank + 1] = 2;
+    }
 
-    if (Chessboard[square.file - 2][square.rank - 1] == 32)
-        PossibleMoves[square.file - 2][square.rank - 1] = 1;
-    else if (DefinePieceCapture(
-                     Chessboard[square.file - 2][square.rank - 1], turn))
-        PossibleMoves[square.file - 2][square.rank - 1] = 2;
+    if (!CheckSquareBoard(square.file - 2, square.rank - 1)) {
+        if (Chessboard[square.file - 2][square.rank - 1] == 32)
+            PossibleMoves[square.file - 2][square.rank - 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file - 2][square.rank - 1], turn))
+            PossibleMoves[square.file - 2][square.rank - 1] = 2;
+    }
 }
 
 void PossibleMovesRook(
@@ -226,6 +267,10 @@ void PossibleMovesRook(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file, square.rank + i))
+            break;
+
         if (Chessboard[square.file][square.rank + i] == 32)
             PossibleMoves[square.file][square.rank + i] = 1;
         else {
@@ -239,6 +284,10 @@ void PossibleMovesRook(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file, square.rank - i))
+            break;
+
         if (Chessboard[square.file][square.rank - i] == 32)
             PossibleMoves[square.file][square.rank - i] = 1;
         else {
@@ -252,6 +301,10 @@ void PossibleMovesRook(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file + i, square.rank))
+            break;
+
         if (Chessboard[square.file + i][square.rank] == 32)
             PossibleMoves[square.file + i][square.rank] = 1;
         else {
@@ -265,6 +318,10 @@ void PossibleMovesRook(
     i = 0;
     while (1) {
         i++;
+
+        if (CheckSquareBoard(square.file - i, square.rank))
+            break;
+
         if (Chessboard[square.file - i][square.rank] == 32)
             PossibleMoves[square.file - i][square.rank] = 1;
         else {
@@ -282,30 +339,42 @@ void PossibleMovesKing(
     int i;
 
     for (i = 1; i >= -1; i--) {
-        if (Chessboard[square.file + 1][square.rank + i] == 32)
-            PossibleMoves[square.file + 1][square.rank + i] = 1;
-        else if (DefinePieceCapture(
-                         Chessboard[square.file + 1][square.rank + i], turn))
-            PossibleMoves[square.file + 1][square.rank + i] = 2;
+        if (!CheckSquareBoard(square.file + 1, square.rank + i)) {
+            if (Chessboard[square.file + 1][square.rank + i] == 32)
+                PossibleMoves[square.file + 1][square.rank + i] = 1;
+            else if (DefinePieceCapture(
+                             Chessboard[square.file + 1][square.rank + i],
+                             turn))
+                PossibleMoves[square.file + 1][square.rank + i] = 2;
+        }
     }
 
     for (i = 1; i >= -1; i--) {
-        if (Chessboard[square.file - 1][square.rank + i] == 32)
-            PossibleMoves[square.file - 1][square.rank + i] = 1;
-        else if (DefinePieceCapture(
-                         Chessboard[square.file - 1][square.rank + i], turn))
-            PossibleMoves[square.file - 1][square.rank + i] = 2;
+        if (!CheckSquareBoard(square.file - 1, square.rank + i)) {
+            if (Chessboard[square.file - 1][square.rank + i] == 32)
+                PossibleMoves[square.file - 1][square.rank + i] = 1;
+            else if (DefinePieceCapture(
+                             Chessboard[square.file - 1][square.rank + i],
+                             turn))
+                PossibleMoves[square.file - 1][square.rank + i] = 2;
+        }
     }
 
-    if (Chessboard[square.file][square.rank + 1] == 32)
-        PossibleMoves[square.file][square.rank + 1] = 1;
-    else if (DefinePieceCapture(Chessboard[square.file][square.rank + 1], turn))
-        PossibleMoves[square.file][square.rank + 1] = 2;
+    if (!CheckSquareBoard(square.file, square.rank + 1)) {
+        if (Chessboard[square.file][square.rank + 1] == 32)
+            PossibleMoves[square.file][square.rank + 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file][square.rank + 1], turn))
+            PossibleMoves[square.file][square.rank + 1] = 2;
+    }
 
-    if (Chessboard[square.file][square.rank - 1] == 32)
-        PossibleMoves[square.file][square.rank - 1] = 1;
-    else if (DefinePieceCapture(Chessboard[square.file][square.rank - 1], turn))
-        PossibleMoves[square.file][square.rank - 1] = 2;
+    if (!CheckSquareBoard(square.file, square.rank - 1)) {
+        if (Chessboard[square.file][square.rank - 1] == 32)
+            PossibleMoves[square.file][square.rank - 1] = 1;
+        else if (DefinePieceCapture(
+                         Chessboard[square.file][square.rank - 1], turn))
+            PossibleMoves[square.file][square.rank - 1] = 2;
+    }
 }
 
 void PossibleMovesQueen(
