@@ -4,6 +4,14 @@
 #include <libchessviz/helper.h>
 #include <libchessviz/move.h>
 
+int CheckSquareBoard(int file, int rank)
+{
+    int code = 1;
+    if (((file >= 1) && (file <= 8)) && ((rank >= 1) && (rank <= 8)))
+        code = 0;
+    return code;
+}
+
 int DefinePieceCapture(char piece, int turn)
 {
     int color, code;
