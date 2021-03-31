@@ -5,7 +5,7 @@
 5. Bc4xb5 ng8-f6
 6. Ng1-f3 qh4-h6
 7. d2-d3 nf6-h5
-8. Nf3-h4 qh6-g5?
+8. Nf3-h4 qh6-g5
 9. Nh4-f5 c7-c6
 10. g2-g4 nh5-f6
 11. Rh1-g1 c6xb5
