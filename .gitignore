@@ -6,3 +6,4 @@ main.c~
 #main.c#
 *.out
 *.exe
+bin/chessviz
