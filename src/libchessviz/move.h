@@ -3,6 +3,7 @@
 #define MOVE_H
 #include <libchessviz/helper.h>
 
+int CheckSquareBoard(int file, int rank);
 int DefinePieceCapture(char piece, int turn);
 int DefinePieceChar(int piece, int turn);
 void RefreshPossibleMoves(int PossibleMoves[9][9]);
