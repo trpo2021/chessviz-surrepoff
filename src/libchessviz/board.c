@@ -3,6 +3,18 @@
 #include <libchessviz/board.h>
 #include <libchessviz/helper.h>
 
+void CleanChessboard(char Chessboard[9][9])
+{
+    int i, j;
+    for (i = 0; i < 9; i++)
+        for (j = 0; j < 9; j++)
+            Chessboard[i][j] = ' ';
+    for (i = 1; i < 9; i++)
+        Chessboard[i][0] = 'a' + i - 1;
+    for (j = 1; j < 9; j++)
+        Chessboard[0][j] = '1' + j - 1;
+}
+
 void RefreshChessboard(char Chessboard[9][9])
 {
     int i, j;
