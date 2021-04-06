@@ -501,7 +501,7 @@ int CheckCastling(char Chessboard[9][9], int option, int turn)
 
 int DoCastling(char Chessboard[9][9], int option, int turn)
 {
-    int code;
+    int code, r;
     code = CheckCastling(Chessboard, option, turn);
 
     if (code == 0) {
