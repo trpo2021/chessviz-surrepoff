@@ -173,9 +173,9 @@ int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
     int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
         if (strcmp(Move, "0-0-0") == 0)
-            code = DoCastling(1, turn);
+            code = DoCastling(Chessboard, 1, turn);
         if (strcmp(Move, "0-0") == 0)
-            code = DoCastling(0, turn);
+            code = DoCastling(Chessboard, 0, turn);
     } else {
         if ((Move[0] >= 97) && (Move[0] <= 104)) {
             piece = 0;
