@@ -455,10 +455,74 @@ int CheckMove(
     return code;
 }
 
-/*int CheckCastling(int option, int turn)
+int CheckCastling(char Chessboard[9][9], int option, int turn)
 {
-    return 0;
-}*/
+	int code = 0, r;
+	Square square;
+	
+	if (!turn) r = 1;
+	else r = 8;
+	
+		if (option){
+			square.file = 5;
+			square.rank = r;
+			code = CheckPieceExistence(Chessboard, square, 5, turn);
+				if (code == 0){
+					square.file = 1;
+					square.rank = r;
+					code = CheckPieceExistence(Chessboard, square, 3, turn);
+					if (code == 0){
+						if ((Chessboard[2][r] != 32)||(Chessboard[3][r] != 32)||(Chessboard[4][r] != 32)){
+							code = 303;
+						}
+					}
+				}
+		}
+		else{
+			square.file = 5;
+			square.rank = r;
+			code = CheckPieceExistence(Chessboard, square, 5, turn);
+				if (code == 0){
+					square.file = 8;
+					square.rank = r;
+					code = CheckPieceExistence(Chessboard, square, 3, turn);
+					if (code == 0){
+						if ((Chessboard[6][r] != 32)||(Chessboard[7][r] != 32)){
+							code = 303;
+						}
+					}
+				}
+		}
+
+    return code;
+}
+
+int DoCastling(char Chessboard[9][9], int option, int turn)
+{
+	int code;
+	code = CheckCastling (Chessboard, option, turn);
+	
+	if (code == 0){
+			if (!turn) r = 1;
+			else r = 8;
+		
+			if (option){
+				Chessboard[1][r] = 32;
+				Chessboard[2][r] = 32;
+				Chessboard[3][r] = DefinePieceChar(5, turn);
+				Chessboard[4][r] = DefinePieceChar(3, turn);
+				Chessboard[5][r] = 32;
+			}
+			else{
+				Chessboard[5][r] = 32;
+				Chessboard[6][r] = DefinePieceChar(3, turn);
+				Chessboard[7][r] = DefinePieceChar(5, turn);
+				Chessboard[8][r] = 32;
+			}	
+	}
+	
+    return code;
+}
 
 int DoMove(
         char Chessboard[9][9],

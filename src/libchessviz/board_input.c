@@ -172,10 +172,10 @@ int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
     strcpy(Move, MoveOriginal);
     int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
-        /*if (strcmp(Move, "0-0-0") == 0)
-            code = CheckCastling(1, turn);
+        if (strcmp(Move, "0-0-0") == 0)
+            code = DoCastling(1, turn);
         if (strcmp(Move, "0-0") == 0)
-            code = CheckCastling(0, turn);*/
+            code = DoCastling(0, turn);
     } else {
         if ((Move[0] >= 97) && (Move[0] <= 104)) {
             piece = 0;

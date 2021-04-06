@@ -55,7 +55,8 @@ int CheckMove(
         int turn,
         int movetype,
         int moveend);
-int CheckCastling(int option, int turn);
+int CheckCastling(char Chessboard[9][9], int option, int turn);
+int DoCastling(char Chessboard[9][9], int option, int turn);
 int DoMove(
         char Chessboard[9][9],
         Square square1,
