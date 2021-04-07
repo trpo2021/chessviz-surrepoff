@@ -420,6 +420,13 @@ int CheckPieceExistence(
 {
     int code = 300, piecechar;
     piecechar = DefinePieceChar(piece, turn);
+
+    if ((piecechar == DefinePieceChar(piece, 1) && (turn == 0)))
+        code = 201;
+
+    if ((piecechar == DefinePieceChar(piece, 0) && (turn == 1)))
+        code = 202;
+
     if (Chessboard[square.file][square.rank] == piecechar)
         code = 0;
     return code;

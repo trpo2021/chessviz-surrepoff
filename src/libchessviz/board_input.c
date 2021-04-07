@@ -29,92 +29,32 @@ Square DefineSquare(char string[2])
     return square;
 }
 
-int DefinePiece(char piece, int turn)
+int DefinePiece(char piece)
 {
     int code = 200;
     switch (piece) {
     case 80:
-        if (!turn)
-            code = 0;
-        else
-            code = 201;
+        code = 0;
         break;
 
     case 66:
-        if (!turn)
-            code = 1;
-        else
-            code = 201;
+        code = 1;
         break;
 
     case 78:
-        if (!turn)
-            code = 2;
-        else
-            code = 201;
+        code = 2;
         break;
 
     case 82:
-        if (!turn)
-            code = 3;
-        else
-            code = 201;
+        code = 3;
         break;
 
     case 81:
-        if (!turn)
-            code = 4;
-        else
-            code = 201;
+        code = 4;
         break;
 
     case 75:
-        if (!turn)
-            code = 5;
-        else
-            code = 201;
-        break;
-
-    case 112:
-        if (turn)
-            code = 0;
-        else
-            code = 202;
-        break;
-
-    case 98:
-        if (turn)
-            code = 1;
-        else
-            code = 202;
-        break;
-
-    case 110:
-        if (turn)
-            code = 2;
-        else
-            code = 202;
-        break;
-
-    case 114:
-        if (turn)
-            code = 3;
-        else
-            code = 202;
-        break;
-
-    case 113:
-        if (turn)
-            code = 4;
-        else
-            code = 202;
-        break;
-
-    case 107:
-        if (turn)
-            code = 5;
-        else
-            code = 202;
+        code = 5;
         break;
     }
 
@@ -137,7 +77,7 @@ int DefineMoveType(char Move)
     return code;
 }
 
-int DefineMoveEnd(char* Move, int piece, int turn)
+int DefineMoveEnd(char* Move, int piece)
 {
     int code = 206;
 
@@ -157,9 +97,8 @@ int DefineMoveEnd(char* Move, int piece, int turn)
         code = 207;
     }
     if (strlen(Move) == 1) {
-        if ((DefinePiece(Move[0], turn) > 0)
-            && (DefinePiece(Move[0], turn) < 5))
-            code = DefinePiece(Move[0], turn);
+        if ((DefinePiece(Move[0]) > 0) && (DefinePiece(Move[0]) < 5))
+            code = DefinePiece(Move[0]);
     }
     return code;
 }
@@ -181,7 +120,7 @@ int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
             piece = 0;
 
         } else {
-            piece = DefinePiece(Move[0], turn);
+            piece = DefinePiece(Move[0]);
             if (piece > 5)
                 code = piece;
 
@@ -212,7 +151,7 @@ int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
                     if (code == 0) {
                         if (Move[2] != '\0') {
                             ShiftString(Move, 2);
-                            moveend = DefineMoveEnd(Move, piece, turn);
+                            moveend = DefineMoveEnd(Move, piece);
                             if (moveend > 10)
                                 code = moveend;
                         }
