@@ -270,9 +270,9 @@ int InputLine(char Chessboard[9][9], char line[32])
                 for (i = strcspn(line, " "); i < 16; i++)
                     WhiteMove[i] = '\0';
 
-                for (i = 0; i < strlen(line) - strlen(WhiteMove); i++)
+                for (i = 0; i < strlen(line) - strlen(WhiteMove) + 2; i++)
                     line[i] = line[i + strlen(WhiteMove)];
-                for (i = strlen(WhiteMove) + 1; i < strlen(line); i++)
+                for (i = strlen(WhiteMove) + 2; i < strlen(line); i++)
                     line[i] = '\0';
 
                 code = InputMove(Chessboard, WhiteMove, 0);
