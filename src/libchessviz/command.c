@@ -26,7 +26,7 @@ void ChangeFlag(int code, int console, int txt, int html)
     }
 }
 
-int DefineFlag(char flag[64])
+int DefineFlag(char flag[SIZE_OF_COMMAND])
 {
     int code = 11;
 
@@ -40,7 +40,7 @@ int DefineFlag(char flag[64])
     return code;
 }
 
-int DefineCommand(char command[64])
+int DefineCommand(char command[SIZE_OF_COMMAND])
 {
     int length = strlen(command), i, code = 0;
 

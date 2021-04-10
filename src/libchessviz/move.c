@@ -56,17 +56,18 @@ int DefinePieceChar(int piece, int turn)
     return code;
 }
 
-void RefreshPossibleMoves(int PossibleMoves[9][9])
+void RefreshPossibleMoves(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD])
 {
     int i, j;
-    for (i = 0; i < 9; i++)
-        for (j = 0; j < 9; j++)
+    for (i = 0; i < SIZE_OF_CHESSBOARD; i++)
+        for (j = 0; j < SIZE_OF_CHESSBOARD; j++)
             PossibleMoves[i][j] = 0;
 }
 
 void PossibleMovesPawn(
-        int PossibleMoves[9][9],
-        char Chessboard[9][9],
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         Square square,
         int turn,
         int moveend)
@@ -118,7 +119,10 @@ void PossibleMovesPawn(
 }
 
 void PossibleMovesBishop(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
 {
     int i;
 
@@ -192,7 +196,10 @@ void PossibleMovesBishop(
 }
 
 void PossibleMovesKnight(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
 {
     if (!CheckSquareBoard(square.file + 1, square.rank + 2)) {
         if (Chessboard[square.file + 1][square.rank + 2] == 32)
@@ -260,7 +267,10 @@ void PossibleMovesKnight(
 }
 
 void PossibleMovesRook(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
 {
     int i;
 
@@ -334,7 +344,10 @@ void PossibleMovesRook(
 }
 
 void PossibleMovesKing(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
 {
     int i;
 
@@ -378,7 +391,10 @@ void PossibleMovesKing(
 }
 
 void PossibleMovesQueen(
-        int PossibleMoves[9][9], char Chessboard[9][9], Square square, int turn)
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
 {
     PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
     PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
@@ -386,8 +402,8 @@ void PossibleMovesQueen(
 }
 
 void FillInPossibleMoves(
-        int PossibleMoves[9][9],
-        char Chessboard[9][9],
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         Square square,
         int piece,
         int turn,
@@ -416,7 +432,10 @@ void FillInPossibleMoves(
 }
 
 int CheckPieceExistence(
-        char Chessboard[9][9], Square square, int piece, int turn)
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int piece,
+        int turn)
 {
     int code = 300, piecechar;
     piecechar = DefinePieceChar(piece, turn);
@@ -433,7 +452,7 @@ int CheckPieceExistence(
 }
 
 int CheckMove(
-        char Chessboard[9][9],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         Square square1,
         Square square2,
         int piece,
@@ -442,7 +461,7 @@ int CheckMove(
         int moveend)
 {
     int code = 301;
-    int PossibleMoves[9][9];
+    int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     RefreshPossibleMoves(PossibleMoves);
     FillInPossibleMoves(
             PossibleMoves, Chessboard, square1, piece, turn, moveend);
@@ -462,7 +481,10 @@ int CheckMove(
     return code;
 }
 
-int CheckCastling(char Chessboard[9][9], int option, int turn)
+int CheckCastling(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        int option,
+        int turn)
 {
     int code = 0, r;
     Square square;
@@ -506,7 +528,10 @@ int CheckCastling(char Chessboard[9][9], int option, int turn)
     return code;
 }
 
-int DoCastling(char Chessboard[9][9], int option, int turn)
+int DoCastling(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        int option,
+        int turn)
 {
     int code, r;
     code = CheckCastling(Chessboard, option, turn);
@@ -535,7 +560,7 @@ int DoCastling(char Chessboard[9][9], int option, int turn)
 }
 
 int DoMove(
-        char Chessboard[9][9],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         Square square1,
         Square square2,
         int piece,

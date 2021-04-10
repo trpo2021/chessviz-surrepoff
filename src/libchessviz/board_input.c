@@ -103,11 +103,14 @@ int DefineMoveEnd(char* Move, int piece)
     return code;
 }
 
-int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
+int InputMove(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char MoveOriginal[SIZE_OF_MOVE],
+        int turn)
 {
     Square square1, square2;
     char square[2];
-    char Move[16];
+    char Move[SIZE_OF_MOVE];
     strcpy(Move, MoveOriginal);
     int code = 0, piece = -1, movetype, moveend = 0;
     if ((strcmp(Move, "0-0-0") == 0) || (strcmp(Move, "0-0") == 0)) {
@@ -174,11 +177,14 @@ int InputMove(char Chessboard[9][9], char MoveOriginal[16], int turn)
     return code;
 }
 
-int InputLine(char Chessboard[9][9], char line[32])
+int InputLine(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char line[SIZE_OF_LINE])
 {
     int code = 0;
     long long unsigned int i;
-    char MoveNumber[8], WhiteMove[16], BlackMove[16];
+    char MoveNumber[SIZE_OF_MOVENUMBER], WhiteMove[SIZE_OF_MOVE],
+            BlackMove[SIZE_OF_MOVE];
 
     for (i = 0; i < strcspn(line, "."); i++) {
         if (!((line[i] >= 48) && (line[i] <= 57))) {
@@ -189,7 +195,7 @@ int InputLine(char Chessboard[9][9], char line[32])
 
     if (code != 100) {
         strncpy(MoveNumber, line, strcspn(line, ".") + 1);
-        for (i = strcspn(line, ".") + 1; i < 8; i++)
+        for (i = strcspn(line, ".") + 1; i < SIZE_OF_MOVENUMBER; i++)
             MoveNumber[i] = '\0';
     }
 
@@ -206,7 +212,7 @@ int InputLine(char Chessboard[9][9], char line[32])
 
             if (strcspn(line, " ") < strlen(line) - 1) {
                 strncpy(WhiteMove, line, strcspn(line, " "));
-                for (i = strcspn(line, " "); i < 16; i++)
+                for (i = strcspn(line, " "); i < SIZE_OF_MOVE; i++)
                     WhiteMove[i] = '\0';
 
                 for (i = 0; i < strlen(line) - strlen(WhiteMove) + 2; i++)
@@ -220,14 +226,14 @@ int InputLine(char Chessboard[9][9], char line[32])
                     ShiftString(line, 1);
 
                     strncpy(BlackMove, line, strlen(line));
-                    for (i = strlen(line); i < 16; i++)
+                    for (i = strlen(line); i < SIZE_OF_MOVE; i++)
                         BlackMove[i] = '\0';
 
                     code = InputMove(Chessboard, BlackMove, 1);
                 }
             } else {
                 strncpy(WhiteMove, line, strlen(line) - 1);
-                for (i = strcspn(line, " "); i < 16; i++)
+                for (i = strcspn(line, " "); i < SIZE_OF_MOVE; i++)
                     WhiteMove[i] = '\0';
 
                 code = InputMove(Chessboard, WhiteMove, 0);
