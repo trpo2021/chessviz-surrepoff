@@ -92,13 +92,13 @@ int main()
 
     RefreshChessboard(Chessboard);
     PrintChessboard(Chessboard);
-    printf("\n\n\n");
+    printf("\n");
 
     while (1) {
         if (fgets(string, SIZE_OF_LINE, InputFile) == NULL)
             break;
         string[strcspn(string, "\n")] = 0;
-        puts(string);
+        printf("\n\n\n   LINE: %s\n", string);
         code = InputLine(Chessboard, string);
         PrintError(code);
         if (code > 0)

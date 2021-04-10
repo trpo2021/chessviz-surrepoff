@@ -1,6 +1,7 @@
 #include <libchessviz/board_input.h>
 #include <libchessviz/helper.h>
 #include <libchessviz/move.h>
+#include <stdio.h>
 #include <string.h>
 
 int DefineFile(char file)
@@ -220,6 +221,9 @@ int InputLine(
                 for (i = strlen(WhiteMove) + 2; i < strlen(line); i++)
                     line[i] = '\0';
 
+                printf("\nWhite Turn:\n");
+                printf("%s %s\n\n", MoveNumber, WhiteMove);
+
                 code = InputMove(Chessboard, WhiteMove, 0);
 
                 if (code == 0) {
@@ -229,12 +233,18 @@ int InputLine(
                     for (i = strlen(line); i < SIZE_OF_MOVE; i++)
                         BlackMove[i] = '\0';
 
+                    printf("\nBlack Turn:\n");
+                    printf("%s %s\n\n", MoveNumber, BlackMove);
+
                     code = InputMove(Chessboard, BlackMove, 1);
                 }
             } else {
-                strncpy(WhiteMove, line, strlen(line) - 1);
+                strncpy(WhiteMove, line, strlen(line));
                 for (i = strcspn(line, " "); i < SIZE_OF_MOVE; i++)
                     WhiteMove[i] = '\0';
+
+                printf("\nWhite Turn:\n");
+                printf("%s %s\n\n", MoveNumber, WhiteMove);
 
                 code = InputMove(Chessboard, WhiteMove, 0);
             }

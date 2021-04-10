@@ -582,7 +582,6 @@ int DoMove(
         }
     }
 
-    printf("\n");
     PrintChessboard(Chessboard);
     return code;
 }
