@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include <libchessviz/board.h>
 #include <libchessviz/helper.h>
 #include <libchessviz/move.h>
@@ -13,7 +15,8 @@ CTEST(pawn, move1)
 	square2.file = 5;
 	square2.rank = 4;
    	CleanChessboard(Chessboard);
-    	ChessBoard[square1.file][square1.rank] = 'p';
+    	Chessboard[square1.file][square1.rank] = 'P';
+	printf("\n");
     
     	const int result = DoMove(Chessboard,square1,square2,0,0,0,0);
 
