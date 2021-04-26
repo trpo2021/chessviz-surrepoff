@@ -148,7 +148,7 @@ CTEST(pawn, NOTmoveblack2)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(pawn, movewhite1L)
+CTEST(pawn, NOTmovewhite1L)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -222,7 +222,7 @@ CTEST(pawn, NOTwhitecaptureL)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(pawn, movewhite1R)
+CTEST(pawn, NOTmovewhite1R)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -296,7 +296,7 @@ CTEST(pawn, NOTwhitecaptureR)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(pawn, moveblack1L)
+CTEST(pawn, NOTmoveblack1L)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -370,7 +370,7 @@ CTEST(pawn, NOTblackcaptureL)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(pawn, moveblack1R)
+CTEST(pawn, NOTmoveblack1R)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
