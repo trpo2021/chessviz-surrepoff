@@ -582,6 +582,5 @@ int DoMove(
         }
     }
 
-    PrintChessboard(Chessboard);
     return code;
 }

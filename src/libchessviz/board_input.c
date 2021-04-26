@@ -1,3 +1,4 @@
+#include <libchessviz/board.h>
 #include <libchessviz/board_input.h>
 #include <libchessviz/helper.h>
 #include <libchessviz/move.h>
@@ -168,6 +169,8 @@ int InputMove(
                                     turn,
                                     movetype,
                                     moveend);
+
+                            PrintChessboard(Chessboard);
                         }
                     }
                 }
