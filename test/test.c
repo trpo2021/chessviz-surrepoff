@@ -347,3 +347,147 @@ CTEST(pawn, NOTblackcaptureR)
     const int expected = 0;
     ASSERT_NOT_EQUAL(expected, result);
 }
+
+CTEST(pawn, NOTmovewhite5)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 2;
+    square2.file = 5;
+    square2.rank = 7;
+    piece = 0;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
+
+CTEST(pawn, NOTmovewhite5L)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 2;
+    square2.file = 1;
+    square2.rank = 7;
+    piece = 0;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
+
+CTEST(pawn, NOTmovewhite5R)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 2;
+    square2.file = 8;
+    square2.rank = 7;
+    piece = 0;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
+
+CTEST(pawn, NOTmoveblack5)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 7;
+    square2.file = 5;
+    square2.rank = 2;
+    piece = 0;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
+
+CTEST(pawn, NOTmoveblack5L)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 7;
+    square2.file = 1;
+    square2.rank = 2;
+    piece = 0;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
+
+CTEST(pawn, NOTmoveblack5R)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 7;
+    square2.file = 8;
+    square2.rank = 2;
+    piece = 0;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'P';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_NOT_EQUAL(expected, result);
+}
