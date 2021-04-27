@@ -8,6 +8,32 @@ int DefinePieceCapture(char piece, int turn);
 int DefinePieceChar(int piece, int turn);
 void RefreshPossibleMoves(
         int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD]);
+void PossibleMoves_FillSquare(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int dif_file,
+        int dif_rank);
+void PossibleMoves_FillHorizontalLine(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int LorR);
+void PossibleMoves_FillVerticalLine(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int UorD);
+void PossibleMoves_FillDiagonal(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int LorR,
+        int UorD);
 void PossibleMovesPawn(
         int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
