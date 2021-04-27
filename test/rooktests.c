@@ -324,7 +324,7 @@ CTEST(rook_move, black3R)
     square1.file = 5;
     square1.rank = 5;
     square2.file = 8;
-    square2.rank = 4;
+    square2.rank = 5;
     piece = 3;
     turn = 1;
     movetype = 0;
