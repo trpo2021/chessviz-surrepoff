@@ -196,6 +196,198 @@ CTEST(bishop_move, black1RD)
     ASSERT_EQUAL(expected, result);
 }
 
+CTEST(bishop_move, white3LU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 8;
+    piece = 1;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, black3LU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 8;
+    piece = 1;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, white3RU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 8;
+    piece = 1;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, black3RU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 8;
+    piece = 1;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, white3LD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 2;
+    piece = 1;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, black3LD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 2;
+    piece = 1;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, white3RD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 2;
+    piece = 1;
+    turn = 0;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_move, black3RD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 2;
+    piece = 1;
+    turn = 1;
+    movetype = 0;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
 CTEST(bishop_NOT_move, white1U)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
@@ -772,6 +964,206 @@ CTEST(bishop_capture, black1LD)
     square1.rank = 5;
     square2.file = 4;
     square2.rank = 4;
+    piece = 1;
+    turn = 1;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, white3LU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 8;
+    piece = 1;
+    turn = 0;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, black3LU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 8;
+    piece = 1;
+    turn = 1;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, white3RU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 8;
+    piece = 1;
+    turn = 0;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, black3RU)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 8;
+    piece = 1;
+    turn = 1;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, white3RD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 2;
+    piece = 1;
+    turn = 0;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, black3RD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 8;
+    square2.rank = 2;
+    piece = 1;
+    turn = 1;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'B';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, white3LD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 2;
+    piece = 1;
+    turn = 0;
+    movetype = 1;
+    moveend = 0;
+
+    CleanChessboard(Chessboard);
+    Chessboard[square1.file][square1.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'b';
+
+    const int result = DoMove(
+            Chessboard, square1, square2, piece, turn, movetype, moveend);
+
+    const int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(bishop_capture, black3LD)
+{
+    char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
+    int piece, turn, movetype, moveend;
+    Square square1, square2;
+    square1.file = 5;
+    square1.rank = 5;
+    square2.file = 2;
+    square2.rank = 2;
     piece = 1;
     turn = 1;
     movetype = 1;
