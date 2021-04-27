@@ -120,6 +120,9 @@ int InputMove(
             code = DoCastling(Chessboard, 1, turn);
         if (strcmp(Move, "0-0") == 0)
             code = DoCastling(Chessboard, 0, turn);
+		
+		PrintChessboard(Chessboard);
+		
     } else {
         if ((Move[0] >= 97) && (Move[0] <= 104)) {
             piece = 0;
