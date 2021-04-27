@@ -4,7 +4,7 @@
 
 #include <ctest.h>
 
-CTEST(bishopmove, white1LU)
+CTEST(bishop_move, white1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -28,7 +28,7 @@ CTEST(bishopmove, white1LU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, black1LU)
+CTEST(bishop_move, black1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -52,7 +52,7 @@ CTEST(bishopmove, black1LU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, white1RU)
+CTEST(bishop_move, white1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -76,7 +76,7 @@ CTEST(bishopmove, white1RU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, black1RU)
+CTEST(bishop_move, black1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -100,7 +100,7 @@ CTEST(bishopmove, black1RU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, white1LD)
+CTEST(bishop_move, white1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -124,7 +124,7 @@ CTEST(bishopmove, white1LD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, black1LD)
+CTEST(bishop_move, black1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -148,7 +148,7 @@ CTEST(bishopmove, black1LD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, white1RD)
+CTEST(bishop_move, white1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -172,7 +172,7 @@ CTEST(bishopmove, white1RD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopmove, black1RD)
+CTEST(bishop_move, black1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -196,7 +196,7 @@ CTEST(bishopmove, black1RD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, white1U)
+CTEST(bishop_NOT_move, white1U)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -220,7 +220,7 @@ CTEST(bishopNOTmove, white1U)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, black1U)
+CTEST(bishop_NOT_move, black1U)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -244,7 +244,7 @@ CTEST(bishopNOTmove, black1U)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, white1R)
+CTEST(bishop_NOT_move, white1R)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -268,7 +268,7 @@ CTEST(bishopNOTmove, white1R)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, black1R)
+CTEST(bishop_NOT_move, black1R)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -292,7 +292,7 @@ CTEST(bishopNOTmove, black1R)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, white1D)
+CTEST(bishop_NOT_move, white1D)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -316,7 +316,7 @@ CTEST(bishopNOTmove, white1D)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, black1D)
+CTEST(bishop_NOT_move, black1D)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -340,7 +340,7 @@ CTEST(bishopNOTmove, black1D)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, white1L)
+CTEST(bishop_NOT_move, white1L)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -364,7 +364,7 @@ CTEST(bishopNOTmove, white1L)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTmove, black1L)
+CTEST(bishop_NOT_move, black1L)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -388,7 +388,7 @@ CTEST(bishopNOTmove, black1L)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, white1LU)
+CTEST(bishop_capture, white1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -413,7 +413,7 @@ CTEST(bishopcapture, white1LU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, black1LU)
+CTEST(bishop_capture, black1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -438,7 +438,7 @@ CTEST(bishopcapture, black1LU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, white1RU)
+CTEST(bishop_capture, white1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -463,7 +463,7 @@ CTEST(bishopcapture, white1RU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, black1RU)
+CTEST(bishop_capture, black1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -488,7 +488,7 @@ CTEST(bishopcapture, black1RU)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, white1RD)
+CTEST(bishop_capture, white1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -513,7 +513,7 @@ CTEST(bishopcapture, white1RD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, black1RD)
+CTEST(bishop_capture, black1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -538,7 +538,7 @@ CTEST(bishopcapture, black1RD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, white1LD)
+CTEST(bishop_capture, white1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -563,7 +563,7 @@ CTEST(bishopcapture, white1LD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopcapture, black1LD)
+CTEST(bishop_capture, black1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -588,7 +588,7 @@ CTEST(bishopcapture, black1LD)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, white1LU)
+CTEST(bishop_NOT_capture, white1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -613,7 +613,7 @@ CTEST(bishopNOTcapture, white1LU)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, black1LU)
+CTEST(bishop_NOT_capture, black1LU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -638,7 +638,7 @@ CTEST(bishopNOTcapture, black1LU)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, white1RU)
+CTEST(bishop_NOT_capture, white1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -663,7 +663,7 @@ CTEST(bishopNOTcapture, white1RU)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, black1RU)
+CTEST(bishop_NOT_capture, black1RU)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -688,7 +688,7 @@ CTEST(bishopNOTcapture, black1RU)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, white1RD)
+CTEST(bishop_NOT_capture, white1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -713,7 +713,7 @@ CTEST(bishopNOTcapture, white1RD)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, black1RD)
+CTEST(bishop_NOT_capture, black1RD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -738,7 +738,7 @@ CTEST(bishopNOTcapture, black1RD)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, white1LD)
+CTEST(bishop_NOT_capture, white1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
@@ -763,7 +763,7 @@ CTEST(bishopNOTcapture, white1LD)
     ASSERT_NOT_EQUAL(expected, result);
 }
 
-CTEST(bishopNOTcapture, black1LD)
+CTEST(bishop_NOT_capture, black1LD)
 {
     char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     int piece, turn, movetype, moveend;
