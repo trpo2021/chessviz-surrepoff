@@ -204,10 +204,23 @@ void PossibleMovesPawn(
                 PossibleMoves[square.file][square.rank + 2 * direction] = 1;
     }
 
-    PossibleMoves_FillSquare(
-            PossibleMoves, Chessboard, square, turn, direction, direction);
-    PossibleMoves_FillSquare(
-            PossibleMoves, Chessboard, square, turn, -direction, direction);
+    if ((Chessboard[square.file + direction][square.rank + direction] != 32)
+        && (!CheckSquareBoard(
+                square.file + direction, square.rank + direction)))
+        if (DefinePieceCapture(
+                    Chessboard[square.file + direction]
+                              [square.rank + direction],
+                    turn))
+            PossibleMoves[square.file + direction][square.rank + direction] = 2;
+
+    if ((Chessboard[square.file - direction][square.rank + direction] != 32)
+        && (!CheckSquareBoard(
+                square.file - direction, square.rank + direction)))
+        if (DefinePieceCapture(
+                    Chessboard[square.file - direction]
+                              [square.rank + direction],
+                    turn))
+            PossibleMoves[square.file - direction][square.rank + direction] = 2;
 
     if (moveend == 7) {
         if ((Chessboard[square.file + direction][square.rank + direction] == 32)
