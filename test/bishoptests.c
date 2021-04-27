@@ -404,7 +404,7 @@ CTEST(bishopcapture, white1LU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -429,7 +429,7 @@ CTEST(bishopcapture, black1LU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -454,7 +454,7 @@ CTEST(bishopcapture, white1RU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -479,7 +479,7 @@ CTEST(bishopcapture, black1RU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -504,7 +504,7 @@ CTEST(bishopcapture, white1RD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -529,7 +529,7 @@ CTEST(bishopcapture, black1RD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -554,7 +554,7 @@ CTEST(bishopcapture, white1LD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -579,7 +579,7 @@ CTEST(bishopcapture, black1LD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -604,7 +604,7 @@ CTEST(bishopNOTcapture, white1LU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -629,7 +629,7 @@ CTEST(bishopNOTcapture, black1LU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -654,7 +654,7 @@ CTEST(bishopNOTcapture, white1RU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -679,7 +679,7 @@ CTEST(bishopNOTcapture, black1RU)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -704,7 +704,7 @@ CTEST(bishopNOTcapture, white1RD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -729,7 +729,7 @@ CTEST(bishopNOTcapture, black1RD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -754,7 +754,7 @@ CTEST(bishopNOTcapture, white1LD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'B';
-	Chessboard[square2.file][square2.rank] = 'B';
+    Chessboard[square2.file][square2.rank] = 'B';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
@@ -779,7 +779,7 @@ CTEST(bishopNOTcapture, black1LD)
 
     CleanChessboard(Chessboard);
     Chessboard[square1.file][square1.rank] = 'b';
-	Chessboard[square2.file][square2.rank] = 'b';
+    Chessboard[square2.file][square2.rank] = 'b';
 
     const int result = DoMove(
             Chessboard, square1, square2, piece, turn, movetype, moveend);
