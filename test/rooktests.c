@@ -902,7 +902,7 @@ CTEST(rook_capture, white1R)
             Chessboard, square1, square2, piece, turn, movetype, moveend);
 
     const int expected = 0;
-    ASSERT_NOT_EQUAL(expected, result);
+    ASSERT_EQUAL(expected, result);
 }
 
 CTEST(rook_capture, black1R)
@@ -1102,7 +1102,7 @@ CTEST(rook_capture, white3R)
             Chessboard, square1, square2, piece, turn, movetype, moveend);
 
     const int expected = 0;
-    ASSERT_NOT_EQUAL(expected, result);
+    ASSERT_EQUAL(expected, result);
 }
 
 CTEST(rook_capture, black3R)
