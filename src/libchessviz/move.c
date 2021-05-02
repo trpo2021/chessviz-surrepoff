@@ -278,6 +278,16 @@ void PossibleMovesRook(
     PossibleMoves_FillVerticalLine(PossibleMoves, Chessboard, square, turn, 1);
 }
 
+void PossibleMovesQueen(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn)
+{
+    PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
+    PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
+}
+
 void PossibleMovesKing(
         int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
         char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
@@ -297,17 +307,6 @@ void PossibleMovesKing(
 
     PossibleMoves_FillSquare(PossibleMoves, Chessboard, square, turn, 0, 1);
     PossibleMoves_FillSquare(PossibleMoves, Chessboard, square, turn, 0, -1);
-}
-
-void PossibleMovesQueen(
-        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
-        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
-        Square square,
-        int turn)
-{
-    PossibleMovesBishop(PossibleMoves, Chessboard, square, turn);
-    PossibleMovesRook(PossibleMoves, Chessboard, square, turn);
-    PossibleMovesKing(PossibleMoves, Chessboard, square, turn);
 }
 
 void FillInPossibleMoves(
