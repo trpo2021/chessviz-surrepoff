@@ -11,56 +11,59 @@
 void PrintError(int code)
 {
     switch (code) {
-    case 10:
+    case WRONG_COMMAND:
         printf("ERROR : Wrong command\n");
         break;
-    case 11:
+    case WRONG_FLAG:
         printf("ERROR : Wrong flag\n");
         break;
-    case 12:
+    case WRONG_FILE:
         printf("ERROR : Wrong input file format (Not .txt)\n");
         break;
-    case 13:
+    case FILE_NOT_FOUND:
         printf("ERROR : File not found\n");
         break;
-    case 100:
+    case INCORRECT_MOVE_NUMBER:
         printf("ERROR : Incorrect move number\n");
         break;
-    case 101:
+    case NO_GAP_AFTER_MOVE_NUMBER:
         printf("ERROR : No gap after move number\n");
         break;
-    case 200:
+    case INCORRECT_PIECE:
         printf("ERROR : Incorrect piece\n");
         break;
-    case 201:
+    case NOT_BLACK_TURN:
         printf("ERROR : It's white turn\n");
         break;
-    case 202:
+    case NOT_WHITE_TURN:
         printf("ERROR : It's black turn\n");
         break;
-    case 203:
+    case INCORRECT_FIRST_SQUARE:
         printf("ERROR : Incorrect first square\n");
         break;
-    case 204:
+    case INCORRECT_MOVE_TYPE:
         printf("ERROR : Incorrect move type\n");
         break;
-    case 205:
+    case INCORRECT_SECOND_SQUARE:
         printf("ERROR : Incorrect second square\n");
         break;
-    case 206:
+    case INCORRECT_MOVE_END:
         printf("ERROR : Incorrect move end\n");
         break;
-    case 207:
+    case CANT_DO_EN_PASSANT:
         printf("ERROR : Not pawn can't do en passant\n");
         break;
-    case 300:
+    case PIECE_NOT_IN_FIRST_SQUARE:
         printf("ERROR : The piece isn't in first square\n");
         break;
-    case 301:
+    case IMPOSSIBLE_MOVE:
         printf("ERROR : Impossible move\n");
         break;
-    case 302:
+    case WRONG_MOVE_TYPE:
         printf("ERROR : Actual move type doesn't match given move type\n");
+        break;
+    case CANT_DO_CASTLING:
+        printf("ERROR : Castling isn't possible\n");
         break;
     }
 }
@@ -84,11 +87,12 @@ int main()
         if (code == 0) {
             InputFile = fopen(string, "r");
             if (InputFile == NULL)
-                code = 13;
+                code = FILE_NOT_FOUND;
         }
         PrintError(code);
         ChangeFlag(code, console, txt, html);
-    } while ((code >= 10) || (code == 2) || (code == 3) || (code == 4));
+    } while ((code >= WRONG_COMMAND) || (code == 2) || (code == 3)
+             || (code == 4));
 
     RefreshChessboard(Chessboard);
     PrintChessboard(Chessboard);

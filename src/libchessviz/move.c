@@ -78,7 +78,7 @@ void PossibleMoves_FillSquare(
     rank = square.rank + dif_rank;
 
     if (!CheckSquareBoard(file, rank)) {
-        if (Chessboard[file][rank] == 32)
+        if (Chessboard[file][rank] == ' ')
             PossibleMoves[file][rank] = 1;
         else if (DefinePieceCapture(Chessboard[file][rank], turn))
             PossibleMoves[file][rank] = 2;
@@ -105,7 +105,7 @@ void PossibleMoves_FillHorizontalLine(
         if (CheckSquareBoard(file, square.rank))
             break;
 
-        if (Chessboard[file][square.rank] == 32)
+        if (Chessboard[file][square.rank] == ' ')
             PossibleMoves[file][square.rank] = 1;
         else {
             if (DefinePieceCapture(Chessboard[file][square.rank], turn))
@@ -135,7 +135,7 @@ void PossibleMoves_FillVerticalLine(
         if (CheckSquareBoard(square.file, rank))
             break;
 
-        if (Chessboard[square.file][rank] == 32)
+        if (Chessboard[square.file][rank] == ' ')
             PossibleMoves[square.file][rank] = 1;
         else {
             if (DefinePieceCapture(Chessboard[square.file][rank], turn))
@@ -172,7 +172,7 @@ void PossibleMoves_FillDiagonal(
         if (CheckSquareBoard(file, rank))
             break;
 
-        if (Chessboard[file][rank] == 32)
+        if (Chessboard[file][rank] == ' ')
             PossibleMoves[file][rank] = 1;
         else {
             if (DefinePieceCapture(Chessboard[file][rank], turn))
@@ -196,15 +196,15 @@ void PossibleMovesPawn(
     else
         direction = 1;
 
-    if ((Chessboard[square.file][square.rank + direction] == 32)
+    if ((Chessboard[square.file][square.rank + direction] == ' ')
         && (!CheckSquareBoard(square.file, square.rank + direction))) {
         PossibleMoves[square.file][square.rank + direction] = 1;
         if (((square.rank == 2) && (!turn)) || ((square.rank == 7) && (turn)))
-            if (Chessboard[square.file][square.rank + 2 * direction] == 32)
+            if (Chessboard[square.file][square.rank + 2 * direction] == ' ')
                 PossibleMoves[square.file][square.rank + 2 * direction] = 1;
     }
 
-    if ((Chessboard[square.file + direction][square.rank + direction] != 32)
+    if ((Chessboard[square.file + direction][square.rank + direction] != ' ')
         && (!CheckSquareBoard(
                 square.file + direction, square.rank + direction)))
         if (DefinePieceCapture(
@@ -213,7 +213,7 @@ void PossibleMovesPawn(
                     turn))
             PossibleMoves[square.file + direction][square.rank + direction] = 2;
 
-    if ((Chessboard[square.file - direction][square.rank + direction] != 32)
+    if ((Chessboard[square.file - direction][square.rank + direction] != ' ')
         && (!CheckSquareBoard(
                 square.file - direction, square.rank + direction)))
         if (DefinePieceCapture(
@@ -223,12 +223,14 @@ void PossibleMovesPawn(
             PossibleMoves[square.file - direction][square.rank + direction] = 2;
 
     if (moveend == 7) {
-        if ((Chessboard[square.file + direction][square.rank + direction] == 32)
+        if ((Chessboard[square.file + direction][square.rank + direction]
+             == ' ')
             && (!CheckSquareBoard(
                     square.file + direction, square.rank + direction)))
             PossibleMoves[square.file + direction][square.rank + direction] = 2;
 
-        if ((Chessboard[square.file - direction][square.rank + direction] == 32)
+        if ((Chessboard[square.file - direction][square.rank + direction]
+             == ' ')
             && (!CheckSquareBoard(
                     square.file - direction, square.rank + direction)))
             PossibleMoves[square.file - direction][square.rank + direction] = 2;
@@ -368,7 +370,7 @@ int CheckMove(
         int movetype,
         int moveend)
 {
-    int code = 301;
+    int code = IMPOSSIBLE_MOVE;
     int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD];
     RefreshPossibleMoves(PossibleMoves);
     FillInPossibleMoves(
@@ -377,13 +379,13 @@ int CheckMove(
         if (movetype == 0)
             code = 0;
         else
-            code = 302;
+            code = WRONG_MOVE_TYPE;
     }
     if (PossibleMoves[square2.file][square2.rank] == 2) {
         if (movetype == 1)
             code = 0;
         else
-            code = 302;
+            code = WRONG_MOVE_TYPE;
     }
 
     return code;
@@ -411,9 +413,9 @@ int CheckCastling(
             square.rank = r;
             code = CheckPieceExistence(Chessboard, square, 3, turn);
             if (code == 0) {
-                if ((Chessboard[2][r] != 32) || (Chessboard[3][r] != 32)
-                    || (Chessboard[4][r] != 32)) {
-                    code = 303;
+                if ((Chessboard[2][r] != ' ') || (Chessboard[3][r] != ' ')
+                    || (Chessboard[4][r] != ' ')) {
+                    code = CANT_DO_CASTLING;
                 }
             }
         }
@@ -426,8 +428,8 @@ int CheckCastling(
             square.rank = r;
             code = CheckPieceExistence(Chessboard, square, 3, turn);
             if (code == 0) {
-                if ((Chessboard[6][r] != 32) || (Chessboard[7][r] != 32)) {
-                    code = 303;
+                if ((Chessboard[6][r] != ' ') || (Chessboard[7][r] != ' ')) {
+                    code = CANT_DO_CASTLING;
                 }
             }
         }
@@ -451,16 +453,16 @@ int DoCastling(
             r = 8;
 
         if (option) {
-            Chessboard[1][r] = 32;
-            Chessboard[2][r] = 32;
+            Chessboard[1][r] = ' ';
+            Chessboard[2][r] = ' ';
             Chessboard[3][r] = DefinePieceChar(5, turn);
             Chessboard[4][r] = DefinePieceChar(3, turn);
-            Chessboard[5][r] = 32;
+            Chessboard[5][r] = ' ';
         } else {
-            Chessboard[5][r] = 32;
+            Chessboard[5][r] = ' ';
             Chessboard[6][r] = DefinePieceChar(3, turn);
             Chessboard[7][r] = DefinePieceChar(5, turn);
-            Chessboard[8][r] = 32;
+            Chessboard[8][r] = ' ';
         }
     }
 
@@ -484,7 +486,7 @@ int DoMove(
         if (code == 0) {
             if ((moveend > 0) && (moveend < 5))
                 piece = moveend;
-            Chessboard[square1.file][square1.rank] = 32;
+            Chessboard[square1.file][square1.rank] = ' ';
             Chessboard[square2.file][square2.rank]
                     = DefinePieceChar(piece, turn);
         }

@@ -33,7 +33,7 @@ Square DefineSquare(char string[2])
 
 int DefinePiece(char piece)
 {
-    int code = 200;
+    int code = INCORRECT_PIECE;
     switch (piece) {
     case 80:
         code = 0;
@@ -74,14 +74,14 @@ int DefineMoveType(char Move)
         code = 1;
         break;
     default:
-        code = 204;
+        code = INCORRECT_MOVE_TYPE;
     }
     return code;
 }
 
 int DefineMoveEnd(char* Move, int piece)
 {
-    int code = 206;
+    int code = INCORRECT_MOVE_END;
 
     if (strcmp(Move, " ") == 0) {
         code = 0;
@@ -96,7 +96,7 @@ int DefineMoveEnd(char* Move, int piece)
         if (piece == 0) {
             code = 7;
         }
-        code = 207;
+        code = CANT_DO_EN_PASSANT;
     }
     if (strlen(Move) == 1) {
         if ((DefinePiece(Move[0]) > 0) && (DefinePiece(Move[0]) < 5))
@@ -139,14 +139,14 @@ int InputMove(
             strncpy(square, Move, 2);
             square1 = DefineSquare(square);
             if ((square1.file == -1) || (square1.rank == -1))
-                code = 203;
+                code = INCORRECT_FIRST_SQUARE;
 
             if (code == 0) {
                 ShiftString(Move, 2);
 
                 movetype = DefineMoveType(Move[0]);
-                if (movetype == 204)
-                    code = 204;
+                if (movetype == INCORRECT_MOVE_TYPE)
+                    code = INCORRECT_MOVE_TYPE;
 
                 if (code == 0) {
                     ShiftString(Move, 1);
@@ -154,7 +154,7 @@ int InputMove(
                     strncpy(square, Move, 2);
                     square2 = DefineSquare(square);
                     if ((square2.file == -1) || (square2.rank == -1))
-                        code = 205;
+                        code = INCORRECT_SECOND_SQUARE;
 
                     if (code == 0) {
                         if (Move[2] != '\0') {
@@ -195,12 +195,12 @@ int InputLine(
 
     for (i = 0; i < strcspn(line, "."); i++) {
         if (!((line[i] >= 48) && (line[i] <= 57))) {
-            code = 100;
+            code = INCORRECT_MOVE_NUMBER;
             break;
         }
     }
 
-    if (code != 100) {
+    if (code != INCORRECT_MOVE_NUMBER) {
         strncpy(MoveNumber, line, strcspn(line, ".") + 1);
         for (i = strcspn(line, ".") + 1; i < SIZE_OF_MOVENUMBER; i++)
             MoveNumber[i] = '\0';
@@ -211,8 +211,8 @@ int InputLine(
             line[i] = line[i + strlen(MoveNumber)];
         for (i = strlen(line) - strlen(MoveNumber); i < strlen(line); i++)
             line[i] = '\0';
-        if (line[0] != 32)
-            code = 101;
+        if (line[0] != ' ')
+            code = NO_GAP_AFTER_MOVE_NUMBER;
 
         if (code == 0) {
             ShiftString(line, 1);

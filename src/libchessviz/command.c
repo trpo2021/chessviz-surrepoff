@@ -28,7 +28,7 @@ void ChangeFlag(int code, int console, int txt, int html)
 
 int DefineFlag(char flag[SIZE_OF_COMMAND])
 {
-    int code = 11;
+    int code = WRONG_FLAG;
 
     if (strcmp(flag, "--console") == 0)
         code = 2;
@@ -48,7 +48,7 @@ int DefineCommand(char command[SIZE_OF_COMMAND])
         if (strcmp(command, "chessviz") == 0)
             code = 1;
         else
-            code = 10;
+            code = WRONG_COMMAND;
     }
 
     if (strncmp(command, "exit", 4) == 0)
@@ -68,7 +68,7 @@ int DefineCommand(char command[SIZE_OF_COMMAND])
                  && (command[length - 2] != 'x')
                  && (command[length - 1] != 't'))
                 || (length <= 4))
-                code = 12;
+                code = WRONG_FILE;
         }
     }
 
