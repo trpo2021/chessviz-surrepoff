@@ -1,4 +1,3 @@
-#pragma once
 #ifndef BOARD_INPUT_H
 #define BOARD_INPUT_H
 #include <libchessviz/helper.h>

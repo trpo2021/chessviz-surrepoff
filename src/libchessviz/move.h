@@ -1,4 +1,3 @@
-#pragma once
 #ifndef MOVE_H
 #define MOVE_H
 #include <libchessviz/helper.h>
