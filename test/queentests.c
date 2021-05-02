@@ -2753,7 +2753,7 @@ CTEST(queen_NOT_capture, black3LD)
             Chessboard, square1, square2, piece, turn, movetype, moveend);
 
     const int expected = 0;
-    ASSERT_EQUAL(expected, result);
+    ASSERT_NOT_EQUAL(expected, result);
 }
 
 CTEST(queen_NOT_capture, white1U)
@@ -3003,7 +3003,7 @@ CTEST(queen_NOT_capture, black3U)
             Chessboard, square1, square2, piece, turn, movetype, moveend);
 
     const int expected = 0;
-    ASSERT_EQUAL(expected, result);
+    ASSERT_NOT_EQUAL(expected, result);
 }
 
 CTEST(queen_NOT_capture, white3L)
