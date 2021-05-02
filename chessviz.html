@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">  
+  <title>Chessviz</title>
+  <style type="text/css">
+   * { margin: 0; padding: 0; }
+ /*  p { font-size: 3em; } */
+   .box { text-align: center; }
+   .centered { display: inline-block; margin: 0; }
+   table.chessboard { border-spacing: 0; border-collapse: collapse; }
+   table.chessboard th { padding: .5em; }
+   table.chessboard td { border: 1px solid; width: 4em; height: 4em; text-align: center; vertical-align: middle; }
+   table.chessboard .white { background: #ffffff; }
+   table.chessboard .black { background: #a9a9a9; }
+   table.chessboard .wking:before   { font-size: 3em; content: "\2654"; }
+   table.chessboard .wqueen:before  { font-size: 3em; content: "\2655"; }
+   table.chessboard .wrook:before   { font-size: 3em; content: "\2656"; }
+   table.chessboard .wbishop:before { font-size: 3em; content: "\2657"; }
+   table.chessboard .wknight:before { font-size: 3em; content: "\2658"; }
+   table.chessboard .wpawn:before   { font-size: 3em; content: "\2659"; }
+
+   table.chessboard .bking:before   { font-size: 3em; content: "\265A"; }
+   table.chessboard .bqueen:before  { font-size: 3em; content: "\265B"; }
+   table.chessboard .brook:before   { font-size: 3em; content: "\265C"; }
+   table.chessboard .bbishop:before { font-size: 3em; content: "\265D"; }
+   table.chessboard .bknight:before { font-size: 3em; content: "\265E"; }
+   table.chessboard .bpawn:before   { font-size: 3em; content: "\265F"; }
+  </style>
+</head>
+
+<body>
+ <div class="box">
+  <div class="centered">
+
+  <table class="chessboard"> 
+   <tbody>
+    <tr>
+     <th></th>
+     <th>a</th>
+     <th>b</th>
+     <th>c</th>
+     <th>d</th>
+     <th>e</th>
+     <th>f</th>
+     <th>g</th>
+     <th>h</th>
+    </tr>
+    <tr>
+     <th>8</th> 
+     <td class="white" id="a8"><span class="brook"></span></td>
+     <td class="black" id="b8"><span class="bknight"></span></td>
+     <td class="white" id="c8"><span class="bbishop"></span></td>
+     <td class="black" id="d8"><span class="bqueen"></span></td>
+     <td class="white" id="e8"><span class="bking"></span></td>
+     <td class="black" id="f8"><span class="bbishop"></span></td>
+     <td class="white" id="g8"><span class="bknight"></span></td>
+     <td class="black" id="h8"><span class="brook"></span></td>
+    </tr>
+    <tr>
+     <th>7</th>
+     <td class="black" id="a7"><span class="bpawn"></span></td>
+     <td class="white" id="b7"><span class="bpawn"></span></td>
+     <td class="black" id="c7"><span class="bpawn"></span></td>
+     <td class="white" id="d7"><span class="bpawn"></span></td>
+     <td class="black" id="e7"><span class="bpawn"></span></td>
+     <td class="white" id="f7"><span class="bpawn"></span></td>
+     <td class="black" id="g7"><span class="bpawn"></span></td>
+     <td class="white" id="h7"><span class="bpawn"></span></td>
+    </tr>
+    <tr>
+     <th>6</th>
+     <td class="white" id="a6"></td>
+     <td class="black" id="b6"></td>
+     <td class="white" id="c6"></td>
+     <td class="black" id="d6"></td>
+     <td class="white" id="e6"></td>
+     <td class="black" id="f6"></td>
+     <td class="white" id="g6"></td>
+     <td class="black" id="h6"></td>
+    </tr>
+    <tr>
+     <th>5</th>
+     <td class="black" id="a5"></td>
+     <td class="white" id="b5"></td>
+     <td class="black" id="c5"></td>
+     <td class="white" id="d5"></td>
+     <td class="black" id="e5"></td>
+     <td class="white" id="f5"></td>
+     <td class="black" id="g5"></td>
+     <td class="white" id="h5"></td>
+    </tr>
+    <tr>
+     <th>4</th>
+     <td class="white" id="a4"></td>
+     <td class="black" id="b4"></td>
+     <td class="white" id="c4"></td>
+     <td class="black" id="d4"></td>
+     <td class="white" id="e4"></td>
+     <td class="black" id="f4"></td>
+     <td class="white" id="g4"></td>
+     <td class="black" id="h4"></td>
+    </tr>
+    <tr>
+     <th>3</th>
+     <td class="black" id="a3"></td>
+     <td class="white" id="b3"></td>
+     <td class="black" id="c3"></td>
+     <td class="white" id="d3"></td>
+     <td class="black" id="e3"></td>
+     <td class="white" id="f3"></td>
+     <td class="black" id="g3"></td>
+     <td class="white" id="h3"></td>
+    </tr>
+    <tr>
+     <th>2</th>
+     <td class="white" id="a2"><span class="wpawn"></span></td>
+     <td class="black" id="b2"><span class="wpawn"></span></td>
+     <td class="white" id="c2"><span class="wpawn"></span></td>
+     <td class="black" id="d2"><span class="wpawn"></span></td>
+     <td class="white" id="e2"><span class="wpawn"></span></td>
+     <td class="black" id="f2"><span class="wpawn"></span></td>
+     <td class="white" id="g2"><span class="wpawn"></span></td>
+     <td class="black" id="h2"><span class="wpawn"></span></td>
+    </tr>
+    <tr>
+     <th>1</th>
+     <td class="black" id="a1"><span class="wrook"></span></td>
+     <td class="white" id="b1"><span class="wknight"></span></td>
+     <td class="black" id="c1"><span class="wbishop"></span></td>
+     <td class="white" id="d1"><span class="wqueen"></span></td>
+     <td class="black" id="e1"><span class="wking"></span></td>
+     <td class="white" id="f1"><span class="wbishop"></span></td>
+     <td class="black" id="g1"><span class="wknight"></span></td>
+     <td class="white" id="h1"><span class="wrook"></span></td>
+    </tr>
+   </tbody>
+  </table>
+
+  </div>
+ </div>
+
+</body>
+</html>

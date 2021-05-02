@@ -1,0 +1,105 @@
+#pragma once
+#ifndef MOVE_H
+#define MOVE_H
+#include <libchessviz/helper.h>
+
+int CheckSquareBoard(int file, int rank);
+int DefinePieceCapture(char piece, int turn);
+int DefinePieceChar(int piece, int turn);
+void RefreshPossibleMoves(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD]);
+void PossibleMoves_FillSquare(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int dif_file,
+        int dif_rank);
+void PossibleMoves_FillHorizontalLine(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int LorR);
+void PossibleMoves_FillVerticalLine(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int UorD);
+void PossibleMoves_FillDiagonal(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int LorR,
+        int UorD);
+void PossibleMovesPawn(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn,
+        int moveend);
+void PossibleMovesBishop(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn);
+void PossibleMovesKnight(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn);
+void PossibleMovesRook(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn);
+void PossibleMovesQueen(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn);
+void PossibleMovesKing(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int turn);
+void FillInPossibleMoves(
+        int PossibleMoves[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int piece,
+        int turn,
+        int moveend);
+int CheckPieceExistence(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square,
+        int piece,
+        int turn);
+int CheckMove(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square1,
+        Square square2,
+        int piece,
+        int turn,
+        int movetype,
+        int moveend);
+int CheckCastling(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        int option,
+        int turn);
+int DoCastling(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        int option,
+        int turn);
+int DoMove(
+        char Chessboard[SIZE_OF_CHESSBOARD][SIZE_OF_CHESSBOARD],
+        Square square1,
+        Square square2,
+        int piece,
+        int turn,
+        int movetype,
+        int moveend);
+
+#endif /* MOVE_H */
